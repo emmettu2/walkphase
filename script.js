@@ -1,5 +1,5 @@
 /* ============================================
-   Signal Landing Page — Scripts
+   WalkPhase Landing Page — Scripts
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,43 +15,65 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -20px 0px'
     });
 
     fadeElements.forEach(el => fadeObserver.observe(el));
 
+    // Trigger elements near top of page immediately
+    setTimeout(() => {
+        fadeElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8) {
+                el.classList.add('visible');
+                fadeObserver.unobserve(el);
+            }
+        });
+    }, 100);
+
     // --- Nav scroll effect ---
     const nav = document.getElementById('nav');
-    let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll > 20) {
+        if (window.scrollY > 20) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
-        lastScroll = currentScroll;
     }, { passive: true });
 
     // --- Mobile nav toggle ---
     const navToggle = document.getElementById('navToggle');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.getElementById('navLinks');
+    let overlay = null;
+
+    function closeMobileNav() {
+        navLinks.classList.remove('mobile-open');
+        navToggle.classList.remove('active');
+        if (overlay) {
+            overlay.classList.remove('active');
+            setTimeout(() => overlay.remove(), 300);
+            overlay = null;
+        }
+    }
+
+    function openMobileNav() {
+        navLinks.classList.add('mobile-open');
+        navToggle.classList.add('active');
+        overlay = document.createElement('div');
+        overlay.className = 'nav-overlay active';
+        overlay.addEventListener('click', closeMobileNav);
+        document.body.appendChild(overlay);
+    }
 
     if (navToggle) {
         navToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '64px';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.background = 'rgba(255,255,255,0.98)';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.padding = '24px';
-            navLinks.style.gap = '16px';
-            navLinks.style.borderBottom = '1px solid rgba(0,0,0,0.06)';
-            navLinks.style.backdropFilter = 'blur(20px)';
+            if (navLinks.classList.contains('mobile-open')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
         });
     }
 
@@ -100,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!walkerFast || !walkerSlow) return;
 
-        const duration = 4000; // 4 seconds for the animation
+        const duration = 4000;
         const startTime = performance.now();
         const totalSeconds = 18;
 
@@ -108,17 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
 
-            // Fast walker: reaches end at ~72% through
             const fastProgress = Math.min(progress / 0.72, 1);
             const fastLeft = 10 + fastProgress * 80;
             walkerFast.style.left = fastLeft + '%';
 
-            // Slow walker: only reaches ~70% by end
             const slowProgress = progress * 0.7;
             const slowLeft = 10 + slowProgress * 80;
             walkerSlow.style.left = slowLeft + '%';
 
-            // Timers
             const timerValue = Math.max(0, Math.round(totalSeconds * (1 - progress)));
             if (timerFast) timerFast.textContent = timerValue;
             if (timerSlow) timerSlow.textContent = timerValue;
@@ -126,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (progress < 1) {
                 requestAnimationFrame(animate);
             } else {
-                // Reset after pause
                 setTimeout(() => {
                     walkerFast.style.left = '10%';
                     walkerSlow.style.left = '10%';
@@ -172,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
             function update(now) {
                 const elapsed = now - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                // Ease out
                 const eased = 1 - Math.pow(1 - progress, 3);
                 const current = target * eased;
                 el.textContent = prefix + current.toFixed(decimals) + suffix;
@@ -185,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(update);
         });
 
-        // Animate bars
         setTimeout(() => {
             metricBars.forEach(bar => {
                 const width = bar.dataset.width;
@@ -194,35 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     }
 
-    // --- Map dots sequential animation ---
-    const mapDots = document.querySelectorAll('.map-dot');
-    let dotsAnimated = false;
-
-    const mapObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !dotsAnimated) {
-                dotsAnimated = true;
-                mapDots.forEach((dot, i) => {
-                    setTimeout(() => {
-                        dot.classList.add('visible');
-                    }, i * 250);
-                });
-            }
-        });
-    }, { threshold: 0.3 });
-
-    const mapContainer = document.querySelector('.map-container');
-    if (mapContainer) {
-        mapObserver.observe(mapContainer);
-    }
-
     // --- Grant Pathway interactive selector ---
     const pathwayOptions = document.querySelectorAll('.pathway-option');
     const pathwayPanels = document.querySelectorAll('.pathway-panel');
     const pathwaySteps = document.querySelectorAll('.pathway-step');
     const pathwayLines = document.querySelectorAll('.pathway-step-line');
 
-    // Step highlight mapping for each option
     const stepHighlights = {
         existing:    { active: ['implement'], completed: ['plan', 'demonstrate'], lines: [0, 1] },
         developing:  { active: ['demonstrate'], completed: ['plan'], lines: [0] },
@@ -230,15 +223,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function updatePathway(optionKey) {
-        // Update option buttons
         pathwayOptions.forEach(opt => opt.classList.remove('active'));
         document.querySelector(`[data-option="${optionKey}"]`)?.classList.add('active');
 
-        // Update panels
         pathwayPanels.forEach(panel => panel.classList.remove('active'));
         document.querySelector(`[data-panel="${optionKey}"]`)?.classList.add('active');
 
-        // Update step indicators
         const highlight = stepHighlights[optionKey];
         if (!highlight) return;
 
@@ -264,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize default state
     updatePathway('existing');
 
     // --- Smooth scroll for anchor links ---
@@ -273,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const navHeight = 64;
+                const navHeight = 102; // announcement bar + nav
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
                 window.scrollTo({
                     top: targetPosition,
@@ -281,8 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // Close mobile nav if open
-                if (window.innerWidth <= 900) {
-                    navLinks.style.display = 'none';
+                if (navLinks.classList.contains('mobile-open')) {
+                    closeMobileNav();
                 }
             }
         });

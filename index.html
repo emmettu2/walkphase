@@ -3,28 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal — Pedestrian Signal Intelligence</title>
-    <meta name="description" content="Signal measures real walking speeds at crossings and identifies where signal timing fails vulnerable pedestrians. Built for Safe Streets for All.">
+    <title>WalkPhase — Pedestrian Intelligence Platform</title>
+    <meta name="description" content="WalkPhase measures real walking speeds at crossings and identifies where signal timing fails vulnerable pedestrians. Built for Safe Streets for All.">
+    <meta property="og:title" content="WalkPhase — Pedestrian Intelligence Platform">
+    <meta property="og:description" content="Pedestrian signal intelligence for SS4A grants. Measures real walking speeds. Identifies unsafe crossings. No hardware required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://walkphase.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <noscript>
+        <style>
+            .fade-up { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 </head>
 <body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        <div class="announcement-inner">
+            <span class="announcement-badge">SS4A</span>
+            <span>The FY2026 Safe Streets for All NOFO is open — <strong>application deadline August 2026</strong>. WalkPhase is built for Implementation Grants.</span>
+            <a href="#ss4a-fit" class="announcement-link">See how we fit &rarr;</a>
+        </div>
+    </div>
 
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <div class="nav-brand">
-                <span class="nav-logo">Signal</span>
-                <span class="nav-sub">a project by BlueSpot Labs</span>
+                <span class="nav-logo">WalkPhase</span>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="#how-it-works">How it works</a>
+                <a href="#ss4a-fit">SS4A fit</a>
                 <a href="#pilot">Pilots</a>
-                <a href="#ss4a">SS4A</a>
                 <a href="#grant-pathway">Grant pathway</a>
-                <a href="#contact" class="nav-cta">Partner with us</a>
+                <a href="#contact" class="nav-cta">Explore a pilot</a>
             </div>
             <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -43,11 +61,11 @@
                 <p class="hero-sub fade-up delay-1">
                     Traffic signals assume people walk at 1.0 m/s.<br>
                     Many don't.<br>
-                    Signal measures the gap — and shows how to fix it.
+                    WalkPhase measures the gap — and shows how to fix it.
                 </p>
                 <div class="hero-ctas fade-up delay-2">
                     <a href="#how-it-works" class="btn btn-primary">See how it works</a>
-                    <a href="#contact" class="btn btn-secondary">Partner with us</a>
+                    <a href="#contact" class="btn btn-secondary">Explore a pilot</a>
                 </div>
             </div>
             <div class="hero-visual fade-up delay-2">
@@ -92,7 +110,7 @@
     <section class="section section-light" id="problem">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">Designed for the average.<br><span class="text-muted">Experienced by everyone.</span></h2>
+                <h2 class="section-title">Designed for 1.0 m/s.<br><span class="text-muted">But many people don't walk that fast.</span></h2>
             </div>
             <div class="comparison fade-up delay-1">
                 <div class="comparison-card comparison-safe">
@@ -137,7 +155,7 @@
                 </div>
             </div>
             <p class="section-body fade-up delay-2">
-                Signal timing standards assume a uniform walking speed of 1.0 m/s. But older adults, people with disabilities, parents with children, and many others walk slower. The result: they're still in the road when the signal changes. Signal quantifies this gap at every intersection.
+                Signal timing standards assume a uniform walking speed of 1.0 m/s. But older adults, people with disabilities, parents with children, and many others walk slower. The result: they're still in the road when the signal changes. WalkPhase quantifies this gap at every intersection.
             </p>
         </div>
     </section>
@@ -151,7 +169,7 @@
             <div class="solution-layout">
                 <div class="solution-text fade-up delay-1">
                     <p class="solution-lead">
-                        Signal turns a smartphone into a pedestrian signal intelligence device.
+                        WalkPhase turns a smartphone into a pedestrian signal intelligence device.
                     </p>
                     <p>
                         Using on-device intelligence, it detects crossings, learns signal timing patterns, and identifies where real-world conditions don't match design assumptions.
@@ -165,17 +183,17 @@
                 <div class="solution-visual fade-up delay-2">
                     <div class="floating-cards">
                         <div class="float-card float-card-1">
-                            <div class="float-card-icon">⏱</div>
+                            <div class="float-card-icon">&#9201;</div>
                             <div class="float-card-label">Countdown</div>
                             <div class="float-card-value">14s remaining</div>
                         </div>
                         <div class="float-card float-card-2">
-                            <div class="float-card-icon">🚶</div>
+                            <div class="float-card-icon">&#128694;</div>
                             <div class="float-card-label">Walking speed</div>
                             <div class="float-card-value">0.72 m/s</div>
                         </div>
                         <div class="float-card float-card-3">
-                            <div class="float-card-icon">📍</div>
+                            <div class="float-card-icon">&#128205;</div>
                             <div class="float-card-label">Status</div>
                             <div class="float-card-value text-green">Crossing detected</div>
                         </div>
@@ -189,7 +207,7 @@
     <section class="section section-light" id="features">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">What Signal measures</h2>
+                <h2 class="section-title">What WalkPhase measures</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-card fade-up">
@@ -245,26 +263,26 @@
         <div class="container">
             <div class="section-header fade-up">
                 <h2 class="section-title text-white">From assumptions<br>to evidence.</h2>
-                <p class="section-subtitle text-white-muted">Signal provides the missing layer in pedestrian safety analysis.</p>
+                <p class="section-subtitle text-white-muted">WalkPhase provides the missing layer in pedestrian safety analysis.</p>
             </div>
             <div class="metrics-grid fade-up delay-1">
                 <div class="metric-card">
-                    <div class="metric-value" data-target="34" data-suffix="%">0%</div>
+                    <div class="metric-value" data-target="34" data-suffix="%">34%</div>
                     <div class="metric-label">of crossings found unsafe</div>
                     <div class="metric-bar"><div class="metric-bar-fill" data-width="34"></div></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" data-target="8.2" data-suffix="s" data-prefix="+">+0s</div>
+                    <div class="metric-value" data-target="8.2" data-suffix="s" data-prefix="+">+8.2s</div>
                     <div class="metric-label">average extension needed</div>
                     <div class="metric-bar"><div class="metric-bar-fill" data-width="55"></div></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" data-target="0.68" data-suffix=" m/s" data-decimals="2">0 m/s</div>
+                    <div class="metric-value" data-target="0.68" data-suffix=" m/s" data-decimals="2">0.68 m/s</div>
                     <div class="metric-label">average observed speed (vs 1.0 assumed)</div>
                     <div class="metric-bar"><div class="metric-bar-fill" data-width="68"></div></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value" data-target="100" data-suffix="%">0%</div>
+                    <div class="metric-value" data-target="100" data-suffix="%">100%</div>
                     <div class="metric-label">on-device processing</div>
                     <div class="metric-bar"><div class="metric-bar-fill" data-width="100"></div></div>
                 </div>
@@ -278,7 +296,7 @@
         <div class="container">
             <div class="section-header fade-up">
                 <h2 class="section-title">Built on real-world data.<br><span class="text-green">Powered by intelligence.</span></h2>
-                <p class="section-subtitle">Signal uses on-device intelligence to understand how people move through intersections — and how signals actually behave.</p>
+                <p class="section-subtitle">WalkPhase uses on-device intelligence to understand how people move through intersections — and how signals actually behave.</p>
             </div>
             <div class="ai-grid">
                 <div class="ai-card fade-up">
@@ -317,69 +335,153 @@
         </div>
     </section>
 
-    <!-- PILOT -->
-    <section class="section section-light" id="pilot">
+    <!-- SS4A FIT — WHY WALKPHASE IS PERFECT -->
+    <section class="section section-ss4a" id="ss4a-fit">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">Deploy in weeks,<br><span class="text-green">not years.</span></h2>
-                <p class="section-subtitle">Signal can be deployed as a lightweight pilot across a small number of intersections — with zero roadside hardware.</p>
+                <h2 class="section-title">Why WalkPhase is built for<br><span class="text-green">Safe Streets for All.</span></h2>
+                <p class="section-subtitle">Every element of WalkPhase aligns with the priorities outlined in the SS4A Implementation Grant NOFO.</p>
             </div>
-            <div class="pilot-layout">
-                <div class="pilot-points fade-up delay-1">
-                    <div class="pilot-point">
-                        <div class="pilot-check">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#166534"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <span>No roadside hardware</span>
+            <div class="ss4a-checklist fade-up delay-1">
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
-                    <div class="pilot-point">
-                        <div class="pilot-check">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#166534"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <span>No signal integration required</span>
-                    </div>
-                    <div class="pilot-point">
-                        <div class="pilot-check">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#166534"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <span>Works with standard smartphones</span>
+                    <div>
+                        <strong>Data-driven safety analysis</strong>
+                        <p>Real walking speed data at every intersection — not estimates or averages from a manual.</p>
                     </div>
                 </div>
-                <div class="pilot-map fade-up delay-2">
-                    <div class="map-container">
-                        <div class="map-grid">
-                            <div class="map-dot map-dot-1" style="top: 25%; left: 30%"></div>
-                            <div class="map-dot map-dot-2" style="top: 40%; left: 55%"></div>
-                            <div class="map-dot map-dot-3" style="top: 60%; left: 35%"></div>
-                            <div class="map-dot map-dot-4" style="top: 30%; left: 70%"></div>
-                            <div class="map-dot map-dot-5" style="top: 55%; left: 65%"></div>
-                            <div class="map-dot map-dot-6" style="top: 70%; left: 45%"></div>
-                            <div class="map-dot map-dot-7" style="top: 45%; left: 25%"></div>
-                            <div class="map-dot map-dot-8" style="top: 20%; left: 50%"></div>
-                            <!-- Street grid lines -->
-                            <div class="map-street map-street-h" style="top: 30%"></div>
-                            <div class="map-street map-street-h" style="top: 50%"></div>
-                            <div class="map-street map-street-h" style="top: 70%"></div>
-                            <div class="map-street map-street-v" style="left: 30%"></div>
-                            <div class="map-street map-street-v" style="left: 50%"></div>
-                            <div class="map-street map-street-v" style="left: 70%"></div>
-                        </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
+                    <div>
+                        <strong>On-device AI / cutting-edge technology</strong>
+                        <p>Patented crossing detection and signal timing learning — all processed on-device with no cloud dependency.</p>
+                    </div>
+                </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Protects the most vulnerable</strong>
+                        <p>Directly measures outcomes for older adults, people with disabilities, children, and anyone who doesn't walk at 1.0 m/s.</p>
+                    </div>
+                </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Works anywhere — no infrastructure</strong>
+                        <p>No roadside hardware, no signal controller access. Deploy across any intersection with a standard smartphone.</p>
+                    </div>
+                </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Integrated with FARS data</strong>
+                        <p>Cross-references crossing risk with national fatality data to support equity-weighted prioritisation.</p>
+                    </div>
+                </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Ready to deploy in weeks</strong>
+                        <p>Operational within 4–8 weeks. No procurement delays, no infrastructure lead time.</p>
+                    </div>
+                </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Dashboards and grant-ready reporting</strong>
+                        <p>Custom reporting tailored to federal deliverable requirements — walking speeds, timing gaps, equity metrics, and intervention recommendations.</p>
+                    </div>
+                </div>
+                <div class="ss4a-check-item">
+                    <div class="ss4a-check-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#166534"/><path d="M6.5 11l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Measurable outcomes for federal reporting</strong>
+                        <p>Quantified, intersection-level data that maps directly to SS4A performance metrics and deliverables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW A PILOT WORKS -->
+    <section class="section" id="pilot">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">How a pilot works</h2>
+                <p class="section-subtitle">A small team generates statistically meaningful data in 30 days — no infrastructure, no integration, no delays.</p>
+            </div>
+            <div class="pilot-how-layout fade-up delay-1">
+                <div class="pilot-how-card">
+                    <div class="pilot-how-number">01</div>
+                    <h3>Select intersections</h3>
+                    <p>Choose 10–15 priority intersections based on crash data, equity concerns, or Action Plan priorities.</p>
+                </div>
+                <div class="pilot-how-card">
+                    <div class="pilot-how-number">02</div>
+                    <h3>Deploy participants</h3>
+                    <p>10–20 participants carry smartphones with WalkPhase during their normal daily routines — or as dedicated data collectors.</p>
+                </div>
+                <div class="pilot-how-card">
+                    <div class="pilot-how-number">03</div>
+                    <h3>Collect crossing data</h3>
+                    <p>Over 30 days, each participant generates multiple crossings per intersection. With 15 participants across 10 intersections, a typical pilot produces <strong>1,500+ recorded crossings</strong>.</p>
+                </div>
+                <div class="pilot-how-card">
+                    <div class="pilot-how-number">04</div>
+                    <h3>Analyse and report</h3>
+                    <p>WalkPhase delivers intersection-level safety analysis: real walking speeds, timing gap identification, risk scoring, and prioritised intervention recommendations.</p>
+                </div>
+            </div>
+            <div class="pilot-stats fade-up delay-2">
+                <div class="pilot-stat">
+                    <div class="pilot-stat-value">10–20</div>
+                    <div class="pilot-stat-label">participants</div>
+                </div>
+                <div class="pilot-stat-divider"></div>
+                <div class="pilot-stat">
+                    <div class="pilot-stat-value">30</div>
+                    <div class="pilot-stat-label">days</div>
+                </div>
+                <div class="pilot-stat-divider"></div>
+                <div class="pilot-stat">
+                    <div class="pilot-stat-value">1,500+</div>
+                    <div class="pilot-stat-label">recorded crossings</div>
+                </div>
+                <div class="pilot-stat-divider"></div>
+                <div class="pilot-stat">
+                    <div class="pilot-stat-value">10–15</div>
+                    <div class="pilot-stat-label">intersections analysed</div>
                 </div>
             </div>
             <div class="pilot-results fade-up delay-2">
                 <h3 class="pilot-results-title">In 30 days, you get:</h3>
                 <div class="pilot-results-grid">
                     <div class="pilot-result-card">
-                        <div class="pilot-result-icon">📊</div>
+                        <div class="pilot-result-icon">&#128202;</div>
                         <p>Intersection-level safety insights</p>
                     </div>
                     <div class="pilot-result-card">
-                        <div class="pilot-result-icon">♿</div>
+                        <div class="pilot-result-icon">&#9855;</div>
                         <p>Equity metrics for vulnerable users</p>
                     </div>
                     <div class="pilot-result-card">
-                        <div class="pilot-result-icon">📋</div>
+                        <div class="pilot-result-icon">&#128203;</div>
                         <p>A clear, data-driven case for intervention</p>
                     </div>
                 </div>
@@ -387,59 +489,11 @@
         </div>
     </section>
 
-    <!-- SS4A -->
-    <section class="section section-ss4a" id="ss4a">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2 class="section-title">Built for<br><span class="text-green">Safe Streets for All.</span></h2>
-                <p class="section-subtitle">Signal is designed to support SS4A Implementation Grants — particularly for demonstration activities and equity-focused interventions.</p>
-            </div>
-            <div class="ss4a-grid fade-up delay-1">
-                <div class="ss4a-item">
-                    <div class="ss4a-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <div>
-                        <strong>Focus on vulnerable road users</strong>
-                        <p>Directly measures the experience of those most at risk.</p>
-                    </div>
-                </div>
-                <div class="ss4a-item">
-                    <div class="ss4a-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <div>
-                        <strong>Low-cost, fast deployment</strong>
-                        <p>No infrastructure investment. Operational in weeks.</p>
-                    </div>
-                </div>
-                <div class="ss4a-item">
-                    <div class="ss4a-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <div>
-                        <strong>Strong alignment with Action Plans</strong>
-                        <p>Supports existing safety priorities and interventions.</p>
-                    </div>
-                </div>
-                <div class="ss4a-item">
-                    <div class="ss4a-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="2"/></svg>
-                    </div>
-                    <div>
-                        <strong>Measurable outcomes for federal reporting</strong>
-                        <p>Quantified data on walking speeds, timing gaps, and risk — ready for grant deliverables.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- GRANT PATHWAY -->
-    <section class="section" id="grant-pathway">
+    <section class="section section-light" id="grant-pathway">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">How Signal fits into<br><span class="text-green">your SS4A grant.</span></h2>
+                <h2 class="section-title">How WalkPhase fits into<br><span class="text-green">your SS4A grant.</span></h2>
                 <p class="section-subtitle">Select your situation to see the simplest path forward.</p>
             </div>
 
@@ -491,7 +545,7 @@
                             <div class="pathway-grant-type">Implementation Grant</div>
                             <h3 class="pathway-panel-title">Apply for an Implementation Grant</h3>
                             <ul class="pathway-panel-list">
-                                <li>Signal acts as an <strong>Operational / Technology Strategy</strong> within your implementation plan</li>
+                                <li>WalkPhase acts as an <strong>Operational / Technology Strategy</strong> within your implementation plan</li>
                                 <li>Provides intersection-level data to support and prioritise implementation activities</li>
                                 <li>Strengthens your application with <strong>measurable, equity-focused outcomes</strong></li>
                             </ul>
@@ -511,7 +565,7 @@
                             <div class="pathway-grant-type">Planning & Demonstration Grant</div>
                             <h3 class="pathway-panel-title">Apply for a Planning & Demonstration Grant</h3>
                             <ul class="pathway-panel-list">
-                                <li>Signal runs as a <strong>demonstration activity</strong> alongside your planning process</li>
+                                <li>WalkPhase runs as a <strong>demonstration activity</strong> alongside your planning process</li>
                                 <li>Generates real-world pedestrian data while your Action Plan is being developed</li>
                                 <li>Directly informs your Safety Action Plan with <strong>evidence from the field</strong></li>
                             </ul>
@@ -531,7 +585,7 @@
                             <div class="pathway-grant-type">Planning & Demonstration Grant</div>
                             <h3 class="pathway-panel-title">Start with a Planning & Demonstration Grant</h3>
                             <ul class="pathway-panel-list">
-                                <li>Use Signal to <strong>generate baseline safety data</strong> at priority intersections</li>
+                                <li>Use WalkPhase to <strong>generate baseline safety data</strong> at priority intersections</li>
                                 <li>Identify high-risk crossings for older adults, people with disabilities, and other vulnerable users</li>
                                 <li>Build a <strong>data-driven Action Plan</strong> grounded in real-world evidence</li>
                             </ul>
@@ -548,8 +602,7 @@
 
             <!-- Section CTA -->
             <div class="pathway-cta fade-up delay-2">
-                <a href="#contact" class="btn btn-primary">Discuss your approach</a>
-                <a href="#contact" class="btn btn-secondary">Explore a pilot</a>
+                <a href="#contact" class="btn btn-primary">Explore a pilot</a>
             </div>
         </div>
     </section>
@@ -573,7 +626,7 @@
                         <li>Grant-ready reporting</li>
                         <li>Federal deliverable alignment</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary btn-full">Start a conversation</a>
+                    <a href="#contact" class="btn btn-primary btn-full">Explore a pilot</a>
                 </div>
                 <div class="pricing-card">
                     <h3 class="pricing-name">Direct Pilot</h3>
@@ -584,54 +637,58 @@
                         <li>Full data and analysis</li>
                         <li>Flexible timeline</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary btn-full">Learn more</a>
+                    <a href="#contact" class="btn btn-secondary btn-full">Get in touch</a>
                 </div>
             </div>
             <p class="pricing-note fade-up delay-2">Pilot scope and pricing are tailored to each partner.</p>
         </div>
     </section>
 
-    <!-- VIDEO -->
-    <section class="section section-light" id="demo">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2 class="section-title">Real crossing. Real data.</h2>
-            </div>
-            <div class="video-container fade-up delay-1">
-                <div class="video-placeholder">
-                    <div class="video-play">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <circle cx="32" cy="32" r="31" stroke="white" stroke-width="2"/>
-                            <polygon points="26,20 26,44 46,32" fill="white"/>
-                        </svg>
-                    </div>
-                    <p class="video-caption">Approach. Countdown. Crossing. Measured.</p>
-                    <p class="video-note">Demo video coming soon</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CREDIBILITY -->
-    <section class="section">
+    <section class="section section-light">
         <div class="container container-narrow">
             <div class="credibility fade-up">
-                <p>Signal is currently in pilot-stage development, with early demonstrations and agency conversations underway.</p>
-                <p class="credibility-patent">Patent pending.</p>
+                <p class="credibility-patent">Patented technology. 2 U.S. patents granted.</p>
+                <p>The product team behind WalkPhase brings over 20 years of experience delivering innovative, high-tech pilot programs in partnership with U.S. transportation agencies — from concept through deployment.</p>
+                <p class="credibility-stage">WalkPhase is currently in pilot-stage development, with early demonstrations and agency conversations underway.</p>
             </div>
         </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- FINAL CTA / CONTACT -->
     <section class="section section-cta" id="contact">
         <div class="container container-narrow">
             <div class="cta-content fade-up">
                 <h2 class="cta-title">Let's make crossings safer — together.</h2>
                 <p class="cta-sub">Whether you're preparing an SS4A application or exploring a direct pilot, we'd love to hear from you.</p>
-                <div class="cta-buttons">
-                    <a href="mailto:team@walkphase.com" class="btn btn-primary btn-lg">Book a demo</a>
-                    <a href="mailto:team@walkphase.com" class="btn btn-secondary btn-lg">Explore a pilot</a>
-                </div>
+
+                <!-- Contact form -->
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/team@walkphase.com" method="POST">
+                    <input type="hidden" name="_subject" value="WalkPhase — Pilot Inquiry">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://walkphase.com#contact">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="agency">Agency / Organisation</label>
+                            <input type="text" id="agency" name="agency" required placeholder="City of..., MPO, University, etc.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="you@agency.gov">
+                    </div>
+                    <div class="form-group">
+                        <label for="context">Tell us about your situation</label>
+                        <textarea id="context" name="context" rows="4" placeholder="E.g. We're preparing an SS4A Implementation Grant and looking for pedestrian safety tools..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-full">Explore a pilot</button>
+                </form>
+
+                <p class="cta-email-fallback">Or email us directly at <a href="mailto:team@walkphase.com">team@walkphase.com</a></p>
             </div>
         </div>
     </section>
@@ -641,15 +698,16 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <span class="footer-logo">Signal</span>
-                    <span class="footer-sub">a project by BlueSpot Labs</span>
+                    <span class="footer-logo">WalkPhase</span>
+                    <span class="footer-sub">Pedestrian Intelligence Platform</span>
                 </div>
                 <div class="footer-links">
-                    <a href="mailto:team@walkphase.com">Contact</a>
+                    <a href="mailto:team@walkphase.com">team@walkphase.com</a>
                 </div>
             </div>
             <div class="footer-legal">
-                <p>&copy; 2026 BlueSpot Labs. All rights reserved.</p>
+                <p>&copy; 2026 WalkPhase. All rights reserved.</p>
+                <p class="footer-patents">Protected by U.S. Patent Nos. [Patent #1], [Patent #2]. Additional patents pending.</p>
             </div>
         </div>
     </footer>
