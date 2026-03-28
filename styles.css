@@ -336,30 +336,40 @@ img {
 
 .nav-links.mobile-open {
     display: flex !important;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
     right: 0;
-    bottom: 0;
-    width: 280px;
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(20px);
+    width: 100%;
+    background: #ffffff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     flex-direction: column;
-    padding: 100px 32px 32px;
-    gap: 8px;
+    padding: 16px 24px 24px;
+    gap: 0;
     z-index: 99;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-top: 1px solid rgba(0,0,0,0.06);
 }
 
 .nav-links.mobile-open a {
-    padding: 12px 0;
+    display: block;
+    padding: 14px 0;
     font-size: 1rem;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nav-links.mobile-open a:last-child {
+    border-bottom: none;
 }
 
 .nav-links.mobile-open .nav-cta {
-    margin-top: 16px;
+    margin-top: 12px;
     text-align: center;
     border-bottom: none;
+    display: block;
+    padding: 14px 20px;
 }
 
 /* --- Hero --- */
