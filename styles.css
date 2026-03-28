@@ -1415,6 +1415,33 @@ img {
     color: var(--text-primary);
 }
 
+.pathway-bonus {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--blue-light);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--blue-accent);
+}
+
+.pathway-bonus-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue-accent);
+    margin-bottom: 6px;
+}
+
+.pathway-bonus p {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.pathway-bonus p strong {
+    color: var(--text-primary);
+}
+
 .pathway-callout {
     display: flex;
     align-items: center;
