@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal — Pedestrian Signal Intelligence</title>
+    <meta name="description" content="Signal measures real walking speeds at crossings and identifies where signal timing fails vulnerable pedestrians. Built for Safe Streets for All.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="nav-logo">Signal</span>
+                <span class="nav-sub">a project by BlueSpot Labs</span>
+            </div>
+            <div class="nav-links">
+                <a href="#how-it-works">How it works</a>
+                <a href="#pilot">Pilots</a>
+                <a href="#ss4a">SS4A</a>
+                <a href="#grant-pathway">Grant pathway</a>
+                <a href="#contact" class="nav-cta">Partner with us</a>
+            </div>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-headline fade-up">
+                    Streets aren't unsafe<br>by accident.<br>
+                    <span class="text-green">They're mistimed.</span>
+                </h1>
+                <p class="hero-sub fade-up delay-1">
+                    Traffic signals assume people walk at 1.0 m/s.<br>
+                    Many don't.<br>
+                    Signal measures the gap — and shows how to fix it.
+                </p>
+                <div class="hero-ctas fade-up delay-2">
+                    <a href="#how-it-works" class="btn btn-primary">See how it works</a>
+                    <a href="#contact" class="btn btn-secondary">Partner with us</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-up delay-2">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="signal-ui">
+                            <div class="signal-icon-container">
+                                <div class="walk-signal-icon">
+                                    <svg viewBox="0 0 60 80" class="walk-figure">
+                                        <circle cx="30" cy="12" r="8" fill="currentColor"/>
+                                        <path d="M30 22 L30 45 M30 30 L18 40 M30 30 L42 40 M30 45 L20 65 M30 45 L40 65" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="countdown-display">
+                                <span class="countdown-number" id="heroCountdown">18</span>
+                            </div>
+                            <div class="signal-label">WALK</div>
+                            <div class="signal-meta">
+                                <div class="signal-meta-item">
+                                    <span class="meta-label">Speed</span>
+                                    <span class="meta-value">0.72 m/s</span>
+                                </div>
+                                <div class="signal-meta-item">
+                                    <span class="meta-label">Required</span>
+                                    <span class="meta-value text-warn">24.3s</span>
+                                </div>
+                            </div>
+                            <div class="signal-status status-warning">
+                                <span class="status-dot"></span>
+                                Insufficient time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section section-light" id="problem">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">Designed for the average.<br><span class="text-muted">Experienced by everyone.</span></h2>
+            </div>
+            <div class="comparison fade-up delay-1">
+                <div class="comparison-card comparison-safe">
+                    <div class="comparison-speed">1.0 m/s</div>
+                    <div class="comparison-label">Assumed walking speed</div>
+                    <div class="comparison-visual">
+                        <div class="crossing-track">
+                            <div class="crossing-line crossing-start"></div>
+                            <div class="crossing-line crossing-end"></div>
+                            <div class="walker walker-fast" id="walkerFast">
+                                <div class="walker-dot"></div>
+                            </div>
+                        </div>
+                        <div class="crossing-timer">
+                            <span class="timer-value" id="timerFast">18</span>s
+                        </div>
+                    </div>
+                    <div class="comparison-result result-safe">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#22c55e"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Crosses safely
+                    </div>
+                </div>
+                <div class="comparison-card comparison-unsafe">
+                    <div class="comparison-speed">0.7 m/s</div>
+                    <div class="comparison-label">Real-world walking speed</div>
+                    <div class="comparison-visual">
+                        <div class="crossing-track">
+                            <div class="crossing-line crossing-start"></div>
+                            <div class="crossing-line crossing-end"></div>
+                            <div class="walker walker-slow" id="walkerSlow">
+                                <div class="walker-dot"></div>
+                            </div>
+                        </div>
+                        <div class="crossing-timer">
+                            <span class="timer-value" id="timerSlow">18</span>s
+                        </div>
+                    </div>
+                    <div class="comparison-result result-unsafe">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#ef4444"/><path d="M7 7l6 6M13 7l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                        Still crossing at zero
+                    </div>
+                </div>
+            </div>
+            <p class="section-body fade-up delay-2">
+                Signal timing standards assume a uniform walking speed of 1.0 m/s. But older adults, people with disabilities, parents with children, and many others walk slower. The result: they're still in the road when the signal changes. Signal quantifies this gap at every intersection.
+            </p>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">A new layer of infrastructure —<br><span class="text-green">without infrastructure.</span></h2>
+            </div>
+            <div class="solution-layout">
+                <div class="solution-text fade-up delay-1">
+                    <p class="solution-lead">
+                        Signal turns a smartphone into a pedestrian signal intelligence device.
+                    </p>
+                    <p>
+                        Using on-device intelligence, it detects crossings, learns signal timing patterns, and identifies where real-world conditions don't match design assumptions.
+                    </p>
+                    <div class="solution-points">
+                        <div class="solution-point">No hardware.</div>
+                        <div class="solution-point">No integration required.</div>
+                        <div class="solution-point">Deployable anywhere.</div>
+                    </div>
+                </div>
+                <div class="solution-visual fade-up delay-2">
+                    <div class="floating-cards">
+                        <div class="float-card float-card-1">
+                            <div class="float-card-icon">⏱</div>
+                            <div class="float-card-label">Countdown</div>
+                            <div class="float-card-value">14s remaining</div>
+                        </div>
+                        <div class="float-card float-card-2">
+                            <div class="float-card-icon">🚶</div>
+                            <div class="float-card-label">Walking speed</div>
+                            <div class="float-card-value">0.72 m/s</div>
+                        </div>
+                        <div class="float-card float-card-3">
+                            <div class="float-card-icon">📍</div>
+                            <div class="float-card-label">Status</div>
+                            <div class="float-card-value text-green">Crossing detected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section class="section section-light" id="features">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">What Signal measures</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-up">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4v24M8 12l8-8 8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="feature-title">Real walking speed</h3>
+                    <p class="feature-desc">Measures actual pedestrian speed at each crossing — not assumptions from a manual.</p>
+                </div>
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2.5"/><path d="M16 10v6l4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="feature-title">Signal timing cycles</h3>
+                    <p class="feature-desc">Learns how each intersection's signals actually operate over time.</p>
+                    <span class="feature-tag">Learned timing model</span>
+                </div>
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="3" stroke="currentColor" stroke-width="2.5"/><path d="M4 16h24" stroke="currentColor" stroke-width="2.5"/><circle cx="10" cy="12" r="1.5" fill="currentColor"/><circle cx="16" cy="12" r="1.5" fill="currentColor"/></svg>
+                    </div>
+                    <h3 class="feature-title">Crossing detection</h3>
+                    <p class="feature-desc">Detects when a pedestrian arrives, starts crossing, and completes a crossing.</p>
+                    <span class="feature-tag">On-device intelligence</span>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4L4 28h24L16 4z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M16 18v-6M16 22v0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="feature-title">Unsafe crossing identification</h3>
+                    <p class="feature-desc">Flags intersections where available walk time is insufficient for real-world users.</p>
+                </div>
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 22l6-8 5 4 4-6 5 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="feature-title">Extension quantification</h3>
+                    <p class="feature-desc">Calculates exactly how many additional seconds each crossing needs.</p>
+                </div>
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="14" r="5" stroke="currentColor" stroke-width="2.5"/><path d="M8 28c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="feature-title">Works anywhere</h3>
+                    <p class="feature-desc">No roadside hardware. No signal controller access. Just a smartphone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA / METRICS -->
+    <section class="section section-dark" id="data">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title text-white">From assumptions<br>to evidence.</h2>
+                <p class="section-subtitle text-white-muted">Signal provides the missing layer in pedestrian safety analysis.</p>
+            </div>
+            <div class="metrics-grid fade-up delay-1">
+                <div class="metric-card">
+                    <div class="metric-value" data-target="34" data-suffix="%">0%</div>
+                    <div class="metric-label">of crossings found unsafe</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" data-width="34"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" data-target="8.2" data-suffix="s" data-prefix="+">+0s</div>
+                    <div class="metric-label">average extension needed</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" data-width="55"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" data-target="0.68" data-suffix=" m/s" data-decimals="2">0 m/s</div>
+                    <div class="metric-label">average observed speed (vs 1.0 assumed)</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" data-width="68"></div></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" data-target="100" data-suffix="%">0%</div>
+                    <div class="metric-label">on-device processing</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" data-width="100"></div></div>
+                </div>
+            </div>
+            <p class="metrics-note fade-up delay-2">Illustrative figures based on early pilot data and published research on pedestrian walking speeds.</p>
+        </div>
+    </section>
+
+    <!-- AI / INTELLIGENCE -->
+    <section class="section" id="intelligence">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">Built on real-world data.<br><span class="text-green">Powered by intelligence.</span></h2>
+                <p class="section-subtitle">Signal uses on-device intelligence to understand how people move through intersections — and how signals actually behave.</p>
+            </div>
+            <div class="ai-grid">
+                <div class="ai-card fade-up">
+                    <div class="ai-number">01</div>
+                    <h3 class="ai-title">Crossing Detection</h3>
+                    <p class="ai-desc">Automatically detects when a pedestrian arrives, starts crossing, and completes a crossing — using motion and location data on-device.</p>
+                    <div class="ai-overlay">
+                        <span class="ai-tag">Crossing detected</span>
+                    </div>
+                </div>
+                <div class="ai-card fade-up delay-1">
+                    <div class="ai-number">02</div>
+                    <h3 class="ai-title">Signal Timing Learning</h3>
+                    <p class="ai-desc">Learns how each intersection operates over time — without infrastructure access or signal controller integration.</p>
+                    <div class="ai-overlay">
+                        <span class="ai-tag">Cycle: 72s</span>
+                    </div>
+                </div>
+                <div class="ai-card fade-up delay-2">
+                    <div class="ai-number">03</div>
+                    <h3 class="ai-title">Risk Identification</h3>
+                    <p class="ai-desc">Identifies crossings where available walk time is insufficient for real-world users — especially older adults and people with mobility limitations.</p>
+                    <div class="ai-overlay">
+                        <span class="ai-tag warn">+7.2s needed</span>
+                    </div>
+                </div>
+                <div class="ai-card fade-up delay-1">
+                    <div class="ai-number">04</div>
+                    <h3 class="ai-title">Prioritisation Insights</h3>
+                    <p class="ai-desc">Helps cities identify which intersections require intervention first — ranked by risk, equity impact, and feasibility.</p>
+                    <div class="ai-overlay">
+                        <span class="ai-tag">0.68 m/s avg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILOT -->
+    <section class="section section-light" id="pilot">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">Deploy in weeks,<br><span class="text-green">not years.</span></h2>
+                <p class="section-subtitle">Signal can be deployed as a lightweight pilot across a small number of intersections — with zero roadside hardware.</p>
+            </div>
+            <div class="pilot-layout">
+                <div class="pilot-points fade-up delay-1">
+                    <div class="pilot-point">
+                        <div class="pilot-check">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#166534"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <span>No roadside hardware</span>
+                    </div>
+                    <div class="pilot-point">
+                        <div class="pilot-check">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#166534"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <span>No signal integration required</span>
+                    </div>
+                    <div class="pilot-point">
+                        <div class="pilot-check">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#166534"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <span>Works with standard smartphones</span>
+                    </div>
+                </div>
+                <div class="pilot-map fade-up delay-2">
+                    <div class="map-container">
+                        <div class="map-grid">
+                            <div class="map-dot map-dot-1" style="top: 25%; left: 30%"></div>
+                            <div class="map-dot map-dot-2" style="top: 40%; left: 55%"></div>
+                            <div class="map-dot map-dot-3" style="top: 60%; left: 35%"></div>
+                            <div class="map-dot map-dot-4" style="top: 30%; left: 70%"></div>
+                            <div class="map-dot map-dot-5" style="top: 55%; left: 65%"></div>
+                            <div class="map-dot map-dot-6" style="top: 70%; left: 45%"></div>
+                            <div class="map-dot map-dot-7" style="top: 45%; left: 25%"></div>
+                            <div class="map-dot map-dot-8" style="top: 20%; left: 50%"></div>
+                            <!-- Street grid lines -->
+                            <div class="map-street map-street-h" style="top: 30%"></div>
+                            <div class="map-street map-street-h" style="top: 50%"></div>
+                            <div class="map-street map-street-h" style="top: 70%"></div>
+                            <div class="map-street map-street-v" style="left: 30%"></div>
+                            <div class="map-street map-street-v" style="left: 50%"></div>
+                            <div class="map-street map-street-v" style="left: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pilot-results fade-up delay-2">
+                <h3 class="pilot-results-title">In 30 days, you get:</h3>
+                <div class="pilot-results-grid">
+                    <div class="pilot-result-card">
+                        <div class="pilot-result-icon">📊</div>
+                        <p>Intersection-level safety insights</p>
+                    </div>
+                    <div class="pilot-result-card">
+                        <div class="pilot-result-icon">♿</div>
+                        <p>Equity metrics for vulnerable users</p>
+                    </div>
+                    <div class="pilot-result-card">
+                        <div class="pilot-result-icon">📋</div>
+                        <p>A clear, data-driven case for intervention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SS4A -->
+    <section class="section section-ss4a" id="ss4a">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">Built for<br><span class="text-green">Safe Streets for All.</span></h2>
+                <p class="section-subtitle">Signal is designed to support SS4A Implementation Grants — particularly for demonstration activities and equity-focused interventions.</p>
+            </div>
+            <div class="ss4a-grid fade-up delay-1">
+                <div class="ss4a-item">
+                    <div class="ss4a-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Focus on vulnerable road users</strong>
+                        <p>Directly measures the experience of those most at risk.</p>
+                    </div>
+                </div>
+                <div class="ss4a-item">
+                    <div class="ss4a-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Low-cost, fast deployment</strong>
+                        <p>No infrastructure investment. Operational in weeks.</p>
+                    </div>
+                </div>
+                <div class="ss4a-item">
+                    <div class="ss4a-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <strong>Strong alignment with Action Plans</strong>
+                        <p>Supports existing safety priorities and interventions.</p>
+                    </div>
+                </div>
+                <div class="ss4a-item">
+                    <div class="ss4a-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <div>
+                        <strong>Measurable outcomes for federal reporting</strong>
+                        <p>Quantified data on walking speeds, timing gaps, and risk — ready for grant deliverables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRANT PATHWAY -->
+    <section class="section" id="grant-pathway">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">How Signal fits into<br><span class="text-green">your SS4A grant.</span></h2>
+                <p class="section-subtitle">Select your situation to see the simplest path forward.</p>
+            </div>
+
+            <!-- Step indicator -->
+            <div class="pathway-steps fade-up delay-1">
+                <div class="pathway-step" data-step="plan">
+                    <div class="pathway-step-dot"></div>
+                    <span>Plan</span>
+                </div>
+                <div class="pathway-step-line"></div>
+                <div class="pathway-step" data-step="demonstrate">
+                    <div class="pathway-step-dot"></div>
+                    <span>Demonstrate</span>
+                </div>
+                <div class="pathway-step-line"></div>
+                <div class="pathway-step" data-step="implement">
+                    <div class="pathway-step-dot"></div>
+                    <span>Implement</span>
+                </div>
+            </div>
+
+            <!-- Selector cards -->
+            <div class="pathway-options fade-up delay-1">
+                <button class="pathway-option active" data-option="existing">
+                    <div class="pathway-option-icon">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="22" height="22" rx="4" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <span class="pathway-option-text">We already have<br>an Action Plan</span>
+                </button>
+                <button class="pathway-option" data-option="developing">
+                    <div class="pathway-option-icon">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 5v18M8 9l6-4 6 4M8 19l6 4 6-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="pathway-option-text">We're developing<br>an Action Plan</span>
+                </button>
+                <button class="pathway-option" data-option="none">
+                    <div class="pathway-option-icon">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="2"/><path d="M14 9v6M14 19v0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <span class="pathway-option-text">We don't have<br>a plan yet</span>
+                </button>
+            </div>
+
+            <!-- Response panels -->
+            <div class="pathway-response fade-up delay-2">
+                <div class="pathway-panel active" data-panel="existing">
+                    <div class="pathway-panel-inner">
+                        <div class="pathway-panel-content">
+                            <div class="pathway-grant-type">Implementation Grant</div>
+                            <h3 class="pathway-panel-title">Apply for an Implementation Grant</h3>
+                            <ul class="pathway-panel-list">
+                                <li>Signal acts as an <strong>Operational / Technology Strategy</strong> within your implementation plan</li>
+                                <li>Provides intersection-level data to support and prioritise implementation activities</li>
+                                <li>Strengthens your application with <strong>measurable, equity-focused outcomes</strong></li>
+                            </ul>
+                        </div>
+                        <div class="pathway-callout">
+                            <div class="pathway-callout-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="currentColor"/></svg>
+                            </div>
+                            <p>Best path for larger funding and faster deployment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pathway-panel" data-panel="developing">
+                    <div class="pathway-panel-inner">
+                        <div class="pathway-panel-content">
+                            <div class="pathway-grant-type">Planning & Demonstration Grant</div>
+                            <h3 class="pathway-panel-title">Apply for a Planning & Demonstration Grant</h3>
+                            <ul class="pathway-panel-list">
+                                <li>Signal runs as a <strong>demonstration activity</strong> alongside your planning process</li>
+                                <li>Generates real-world pedestrian data while your Action Plan is being developed</li>
+                                <li>Directly informs your Safety Action Plan with <strong>evidence from the field</strong></li>
+                            </ul>
+                        </div>
+                        <div class="pathway-callout">
+                            <div class="pathway-callout-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="currentColor"/></svg>
+                            </div>
+                            <p>Combines planning + real data collection</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pathway-panel" data-panel="none">
+                    <div class="pathway-panel-inner">
+                        <div class="pathway-panel-content">
+                            <div class="pathway-grant-type">Planning & Demonstration Grant</div>
+                            <h3 class="pathway-panel-title">Start with a Planning & Demonstration Grant</h3>
+                            <ul class="pathway-panel-list">
+                                <li>Use Signal to <strong>generate baseline safety data</strong> at priority intersections</li>
+                                <li>Identify high-risk crossings for older adults, people with disabilities, and other vulnerable users</li>
+                                <li>Build a <strong>data-driven Action Plan</strong> grounded in real-world evidence</li>
+                            </ul>
+                        </div>
+                        <div class="pathway-callout">
+                            <div class="pathway-callout-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" fill="currentColor"/></svg>
+                            </div>
+                            <p>Fastest way to build a strong, evidence-based application</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section CTA -->
+            <div class="pathway-cta fade-up delay-2">
+                <a href="#contact" class="btn btn-primary">Discuss your approach</a>
+                <a href="#contact" class="btn btn-secondary">Explore a pilot</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">Structured for<br>real-world deployment.</h2>
+                <p class="section-subtitle">Designed to fit within SS4A implementation grants — or run as a direct pilot.</p>
+            </div>
+            <p class="pricing-lead fade-up delay-1">Typical pilot engagements range from <strong>$75k to $125k</strong> depending on scope.</p>
+            <div class="pricing-grid fade-up delay-1">
+                <div class="pricing-card pricing-card-featured">
+                    <div class="pricing-badge">Recommended</div>
+                    <h3 class="pricing-name">SS4A Grant-Funded Pilot</h3>
+                    <p class="pricing-desc">Included in your Implementation Grant application. No upfront cost during the application phase. Delivered upon award.</p>
+                    <ul class="pricing-features">
+                        <li>5–15 intersections</li>
+                        <li>4–8 week deployment</li>
+                        <li>Grant-ready reporting</li>
+                        <li>Federal deliverable alignment</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-full">Start a conversation</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-name">Direct Pilot</h3>
+                    <p class="pricing-desc">Run independently of grant timelines. Ideal for faster deployment, early validation, or agencies with existing budgets.</p>
+                    <ul class="pricing-features">
+                        <li>5–15 intersections</li>
+                        <li>4–8 week deployment</li>
+                        <li>Full data and analysis</li>
+                        <li>Flexible timeline</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-full">Learn more</a>
+                </div>
+            </div>
+            <p class="pricing-note fade-up delay-2">Pilot scope and pricing are tailored to each partner.</p>
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="section section-light" id="demo">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">Real crossing. Real data.</h2>
+            </div>
+            <div class="video-container fade-up delay-1">
+                <div class="video-placeholder">
+                    <div class="video-play">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="31" stroke="white" stroke-width="2"/>
+                            <polygon points="26,20 26,44 46,32" fill="white"/>
+                        </svg>
+                    </div>
+                    <p class="video-caption">Approach. Countdown. Crossing. Measured.</p>
+                    <p class="video-note">Demo video coming soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDIBILITY -->
+    <section class="section">
+        <div class="container container-narrow">
+            <div class="credibility fade-up">
+                <p>Signal is currently in pilot-stage development, with early demonstrations and agency conversations underway.</p>
+                <p class="credibility-patent">Patent pending.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section section-cta" id="contact">
+        <div class="container container-narrow">
+            <div class="cta-content fade-up">
+                <h2 class="cta-title">Let's make crossings safer — together.</h2>
+                <p class="cta-sub">Whether you're preparing an SS4A application or exploring a direct pilot, we'd love to hear from you.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:team@walkphase.com" class="btn btn-primary btn-lg">Book a demo</a>
+                    <a href="mailto:team@walkphase.com" class="btn btn-secondary btn-lg">Explore a pilot</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-logo">Signal</span>
+                    <span class="footer-sub">a project by BlueSpot Labs</span>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:team@walkphase.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p>&copy; 2026 BlueSpot Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
