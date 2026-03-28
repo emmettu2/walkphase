@@ -229,15 +229,28 @@ img {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(3, 10, 6, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     transition: all var(--transition);
 }
 
 .nav.scrolled {
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+.nav.scrolled .nav-links a {
+    color: var(--text-secondary);
+}
+
+.nav.scrolled .nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav.scrolled .nav-logo-img {
+    filter: none;
 }
 
 .nav-inner {
@@ -255,11 +268,6 @@ img {
     align-items: center;
 }
 
-.nav-logo-img {
-    height: 48px;
-    width: auto;
-}
-
 .nav-links {
     display: flex;
     align-items: center;
@@ -269,12 +277,23 @@ img {
 .nav-links a {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     transition: color var(--transition);
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
+    color: white;
+}
+
+.nav-logo-img {
+    height: 48px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    transition: filter var(--transition);
+}
+
+.nav.scrolled .nav-logo-img {
+    filter: none;
 }
 
 .nav-cta {
@@ -372,11 +391,311 @@ img {
     padding: 14px 20px;
 }
 
-/* --- Hero --- */
-.hero {
-    padding: 80px 0 100px;
+/* --- Cinematic Hero --- */
+.c-hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #030a06;
+    padding: 60px 24px;
+}
+
+.c-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.c-hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, #030a06 75%);
+    z-index: 2;
+}
+
+.c-hero-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px;
+    z-index: 3;
+}
+
+.c-hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -55%);
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, rgba(0, 255, 136, 0) 70%);
+    z-index: 1;
+    transition: opacity 2s ease;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -55%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -55%) scale(1.05); }
+}
+
+.c-hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    gap: 40px;
+}
+
+/* Rings */
+.c-rings-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: ringsAppear 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+@keyframes ringsAppear {
+    to { opacity: 1; transform: scale(1); }
+}
+
+.c-rings-svg {
+    width: 100%;
+    height: 100%;
+    filter: url(#glowFilter);
+}
+
+.c-ring-signal {
+    transition: stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.c-ring-walker {
+    transition: stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.c-countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.c-countdown-num {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #00ff88;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+    transition: color 0.8s ease, text-shadow 0.8s ease;
+}
+
+.c-countdown-num.danger {
+    color: #ff6b35;
+    text-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+}
+
+.c-countdown-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 4px;
+}
+
+/* Ring labels */
+.c-ring-label {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    opacity: 0;
+    animation: labelFade 0.8s ease 2s forwards;
+}
+
+@keyframes labelFade {
+    to { opacity: 1; }
+}
+
+.c-ring-label-signal {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-70%);
+}
+
+.c-ring-label-walker {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(10%);
+}
+
+.c-ring-label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.c-ring-label-dot-green {
+    background: #00ff88;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+.c-ring-label-dot-amber {
+    background: #ffaa00;
+    box-shadow: 0 0 8px rgba(255, 170, 0, 0.5);
+}
+
+/* Hero text */
+.c-hero-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: textReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1s forwards;
+}
+
+@keyframes textReveal {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.c-headline {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    color: #f5f5f5;
+    margin-bottom: 16px;
+}
+
+.c-headline-accent {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.c-subheadline {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Hero CTAs */
+.c-hero-ctas {
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: textReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 1.6s forwards;
+}
+
+.c-btn-glow {
+    background: #00cc6a;
+    color: #030a06;
+    font-weight: 700;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.c-btn-glow:hover {
+    background: #00ff88;
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.35);
+    transform: translateY(-2px);
+}
+
+.c-btn-ghost {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.c-btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Divergence warning */
+.c-diverge-label {
+    position: absolute;
+    top: 28%;
+    right: -24px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ff6b35;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    white-space: nowrap;
+    text-shadow: 0 0 12px rgba(255, 107, 53, 0.4);
+}
+
+.c-diverge-label.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+    .c-hero {
+        min-height: auto;
+        padding: 48px 20px 64px;
+    }
+
+    .c-rings-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .c-countdown-num {
+        font-size: 3rem;
+    }
+
+    .c-hero-ctas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .c-ring-label {
+        font-size: 0.6rem;
+    }
+
+    .c-ring-label-signal {
+        transform: translateX(-80%);
+    }
+
+    .c-ring-label-walker {
+        transform: translateX(20%);
+    }
+
+    .c-diverge-label {
+        right: -8px;
+        font-size: 0.5625rem;
+    }
+}
+
+/* Old hero (hidden) */
+.hero {
+    display: none;
+    padding: 80px 0 100px;
+    min-height: 100vh;
     align-items: center;
 }
 

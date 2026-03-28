@@ -51,58 +51,82 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-headline fade-up">
-                    Streets aren't unsafe<br>by accident.<br>
-                    <span class="text-green">They're mistimed.</span>
-                </h1>
-                <p class="hero-sub fade-up delay-1">
-                    Traffic signals assume people walk at 1.0 m/s.<br>
-                    Many don't.<br>
-                    WalkPhase measures the gap — and shows how to fix it.
-                </p>
-                <div class="hero-ctas fade-up delay-2">
-                    <a href="#how-it-works" class="btn btn-primary">See how it works</a>
-                    <a href="#contact" class="btn btn-secondary">Explore a pilot</a>
+    <!-- CINEMATIC HERO -->
+    <section class="c-hero" id="hero">
+        <!-- Background layers -->
+        <div class="c-hero-bg">
+            <div class="c-hero-vignette"></div>
+            <div class="c-hero-grain"></div>
+            <div class="c-hero-glow" id="heroGlow"></div>
+        </div>
+
+        <!-- Centered content -->
+        <div class="c-hero-content">
+            <!-- Countdown rings -->
+            <div class="c-rings-container" id="ringsContainer">
+                <svg class="c-rings-svg" viewBox="0 0 300 300">
+                    <!-- Track ring (background) -->
+                    <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="3"/>
+                    <!-- Signal ring (how much time the signal gives) -->
+                    <circle class="c-ring-signal" id="ringSignal" cx="150" cy="150" r="130" fill="none"
+                        stroke="url(#greenGlow)" stroke-width="4" stroke-linecap="round"
+                        stroke-dasharray="816.81" stroke-dashoffset="0"
+                        transform="rotate(-90 150 150)"/>
+                    <!-- Walker ring (how much time you actually need) -->
+                    <circle class="c-ring-walker" id="ringWalker" cx="150" cy="150" r="118" fill="none"
+                        stroke="url(#amberGlow)" stroke-width="4" stroke-linecap="round"
+                        stroke-dasharray="741.42" stroke-dashoffset="0"
+                        transform="rotate(-90 150 150)"/>
+                    <!-- Gradient defs -->
+                    <defs>
+                        <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00ff88"/>
+                            <stop offset="100%" stop-color="#00cc6a"/>
+                        </linearGradient>
+                        <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffaa00"/>
+                            <stop offset="100%" stop-color="#ff6b35"/>
+                        </linearGradient>
+                        <filter id="glowFilter">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                </svg>
+                <!-- Center countdown number -->
+                <div class="c-countdown" id="cCountdown">
+                    <span class="c-countdown-num" id="cCountdownNum">18</span>
+                    <span class="c-countdown-label">seconds</span>
+                </div>
+                <!-- Ring labels -->
+                <div class="c-ring-label c-ring-label-signal" id="labelSignal">
+                    <span class="c-ring-label-dot c-ring-label-dot-green"></span>
+                    Signal timing
+                </div>
+                <div class="c-ring-label c-ring-label-walker" id="labelWalker">
+                    <span class="c-ring-label-dot c-ring-label-dot-amber"></span>
+                    Actual crossing
                 </div>
             </div>
-            <div class="hero-visual fade-up delay-2">
-                <div class="phone-frame">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen">
-                        <div class="signal-ui">
-                            <div class="signal-icon-container">
-                                <div class="walk-signal-icon">
-                                    <svg viewBox="0 0 60 80" class="walk-figure">
-                                        <circle cx="30" cy="12" r="8" fill="currentColor"/>
-                                        <path d="M30 22 L30 45 M30 30 L18 40 M30 30 L42 40 M30 45 L20 65 M30 45 L40 65" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="countdown-display">
-                                <span class="countdown-number" id="heroCountdown">18</span>
-                            </div>
-                            <div class="signal-label">WALK</div>
-                            <div class="signal-meta">
-                                <div class="signal-meta-item">
-                                    <span class="meta-label">Speed</span>
-                                    <span class="meta-value">0.72 m/s</span>
-                                </div>
-                                <div class="signal-meta-item">
-                                    <span class="meta-label">Required</span>
-                                    <span class="meta-value text-warn">24.3s</span>
-                                </div>
-                            </div>
-                            <div class="signal-status status-warning">
-                                <span class="status-dot"></span>
-                                Insufficient time
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <!-- Insight text -->
+            <div class="c-hero-text" id="heroText">
+                <h1 class="c-headline">
+                    The signal says go.<br>
+                    <span class="c-headline-accent">Your body says wait.</span>
+                </h1>
+                <p class="c-subheadline">
+                    WalkPhase shows when crossings don't give you enough time.
+                </p>
+            </div>
+
+            <!-- CTA -->
+            <div class="c-hero-ctas" id="heroCtas">
+                <a href="#how-it-works" class="btn btn-primary btn-lg c-btn-glow">See how it works</a>
+                <a href="#contact" class="btn btn-secondary btn-lg c-btn-ghost">Explore a pilot</a>
             </div>
         </div>
     </section>

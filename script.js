@@ -35,8 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Nav scroll effect ---
     const nav = document.getElementById('nav');
 
+    const heroSection = document.querySelector('.c-hero');
+    const heroHeight = heroSection ? heroSection.offsetHeight : 400;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
+        if (window.scrollY > heroHeight - 80) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
@@ -77,25 +80,98 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Hero countdown animation ---
-    const heroCountdown = document.getElementById('heroCountdown');
-    let countdownValue = 18;
-    let countdownDirection = -1;
+    // --- Cinematic Hero Ring Animation ---
+    const ringSignal = document.getElementById('ringSignal');
+    const ringWalker = document.getElementById('ringWalker');
+    const cCountdownNum = document.getElementById('cCountdownNum');
+    const ringsContainer = document.getElementById('ringsContainer');
 
-    setInterval(() => {
-        countdownValue += countdownDirection;
-        if (countdownValue <= 0) {
-            countdownValue = 0;
-            countdownDirection = 0;
-            setTimeout(() => {
-                countdownValue = 18;
-                countdownDirection = -1;
-            }, 2000);
+    if (ringSignal && ringWalker && cCountdownNum) {
+        const TOTAL_SECONDS = 18;
+        const SIGNAL_CIRCUMFERENCE = 816.81; // 2 * PI * 130
+        const WALKER_CIRCUMFERENCE = 741.42; // 2 * PI * 118
+
+        // Signal completes in 18s, walker needs ~25s (0.72 m/s)
+        // So at 18s, walker has only completed 18/25 = 72%
+        const WALKER_SPEED_RATIO = 0.72; // walker only covers 72% when signal hits zero
+
+        let animationPhase = 'countdown'; // countdown | hold | reset
+        let elapsed = 0;
+        let lastTimestamp = null;
+
+        // Add divergence label dynamically
+        const divergeLabel = document.createElement('div');
+        divergeLabel.className = 'c-diverge-label';
+        divergeLabel.textContent = 'Still crossing';
+        ringsContainer.appendChild(divergeLabel);
+
+        function animateRings(timestamp) {
+            if (!lastTimestamp) lastTimestamp = timestamp;
+            const dt = (timestamp - lastTimestamp) / 1000;
+            lastTimestamp = timestamp;
+
+            if (animationPhase === 'countdown') {
+                elapsed += dt;
+                const progress = Math.min(elapsed / TOTAL_SECONDS, 1);
+                const secondsLeft = Math.max(0, Math.ceil(TOTAL_SECONDS * (1 - progress)));
+
+                // Signal ring depletes fully
+                const signalOffset = SIGNAL_CIRCUMFERENCE * progress;
+                ringSignal.style.strokeDashoffset = signalOffset;
+
+                // Walker ring depletes slower (won't finish in time)
+                const walkerProgress = progress * WALKER_SPEED_RATIO;
+                const walkerOffset = WALKER_CIRCUMFERENCE * walkerProgress;
+                ringWalker.style.strokeDashoffset = walkerOffset;
+
+                // Update countdown number
+                cCountdownNum.textContent = secondsLeft;
+
+                // Danger state when below 5s
+                if (secondsLeft <= 5) {
+                    cCountdownNum.classList.add('danger');
+                }
+
+                // Show divergence label when gap is obvious (last 6 seconds)
+                if (secondsLeft <= 6) {
+                    divergeLabel.classList.add('visible');
+                }
+
+                if (progress >= 1) {
+                    animationPhase = 'hold';
+                    cCountdownNum.textContent = '0';
+                    setTimeout(() => {
+                        animationPhase = 'reset';
+                    }, 3000);
+                }
+            } else if (animationPhase === 'reset') {
+                // Smooth reset
+                ringSignal.style.transition = 'stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1)';
+                ringWalker.style.transition = 'stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1)';
+                ringSignal.style.strokeDashoffset = 0;
+                ringWalker.style.strokeDashoffset = 0;
+                cCountdownNum.textContent = TOTAL_SECONDS;
+                cCountdownNum.classList.remove('danger');
+                divergeLabel.classList.remove('visible');
+
+                elapsed = 0;
+                lastTimestamp = null;
+
+                setTimeout(() => {
+                    ringSignal.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1)';
+                    ringWalker.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1)';
+                    animationPhase = 'countdown';
+                }, 1200);
+            }
+
+            requestAnimationFrame(animateRings);
         }
-        if (heroCountdown) {
-            heroCountdown.textContent = countdownValue;
-        }
-    }, 1000);
+
+        // Start after initial entrance animation
+        setTimeout(() => {
+            requestAnimationFrame(animateRings);
+        }, 1800);
+    }
 
     // --- Crossing comparison animation ---
     const comparisonSection = document.getElementById('problem');
