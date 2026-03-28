@@ -182,10 +182,7 @@ img {
     padding: 10px 24px;
     font-size: 0.8125rem;
     text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
     z-index: 101;
 }
 
@@ -227,8 +224,8 @@ img {
 
 /* --- Nav --- */
 .nav {
-    position: fixed;
-    top: 38px;
+    position: sticky;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 100;
@@ -367,7 +364,7 @@ img {
 
 /* --- Hero --- */
 .hero {
-    padding: 180px 0 100px;
+    padding: 80px 0 100px;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1820,16 +1817,12 @@ img {
         gap: 6px;
     }
 
-    .nav {
-        top: 34px;
-    }
-
     .section {
         padding: 80px 0;
     }
 
     .hero {
-        padding: 150px 0 80px;
+        padding: 60px 0 60px;
         min-height: auto;
     }
 
