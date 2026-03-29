@@ -1035,7 +1035,77 @@ img {
     font-weight: 500;
 }
 
-/* --- SS4A Checklist --- */
+/* --- Automated Detection Grid --- */
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.auto-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all var(--transition);
+}
+
+.auto-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.auto-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--green-pale);
+    color: var(--green-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.auto-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.auto-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* --- SS4A Compact Checklist --- */
+.ss4a-compact {
+    max-width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 32px;
+}
+
+.ss4a-compact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding: 8px 0;
+}
+
+.ss4a-compact-item svg {
+    flex-shrink: 0;
+}
+
+/* --- SS4A Checklist (legacy) --- */
 .ss4a-checklist {
     max-width: 800px;
     margin: 0 auto;
@@ -1805,7 +1875,7 @@ img {
     }
 
     .hero-visual {
-        order: -1;
+        order: 1;
     }
 
     .phone-frame {
@@ -1843,6 +1913,14 @@ img {
     }
 
     .ai-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ss4a-compact {
         grid-template-columns: 1fr;
     }
 
