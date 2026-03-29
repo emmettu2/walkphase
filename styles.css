@@ -1729,106 +1729,35 @@ img {
     margin-top: 32px;
 }
 
-/* --- About Us --- */
-.about-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
-    align-items: start;
-    margin-bottom: 48px;
-}
-
-.about-lead {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.7;
-    margin-bottom: 16px;
-}
-
-.about-text p {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-}
-
-.about-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.about-stat {
-    padding: 20px 24px;
+/* --- About --- */
+.about-simple {
+    text-align: center;
+    padding: 48px 40px;
     background: white;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0,0,0,0.06);
     box-shadow: var(--shadow-sm);
 }
 
-.about-stat-value {
-    font-size: 2rem;
+.about-simple-title {
+    font-size: 1.25rem;
     font-weight: 800;
-    color: var(--green-deep);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 16px;
 }
 
-.about-stat-label {
-    font-size: 0.8125rem;
+.about-simple p {
+    font-size: 1rem;
     color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 12px;
 }
 
-.about-highlights {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px 32px;
-    max-width: 800px;
-    margin: 0 auto 40px;
-}
-
-.about-highlight {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.875rem;
-    font-weight: 500;
+.about-simple p:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
     color: var(--text-primary);
-    padding: 8px 0;
-}
-
-.about-highlight svg {
-    flex-shrink: 0;
-}
-
-.about-stage {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    font-style: italic;
-}
-
-@media (max-width: 900px) {
-    .about-layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    .about-stats {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-    .about-stat {
-        flex: 1;
-        min-width: 140px;
-    }
-
-    .about-highlights {
-        grid-template-columns: 1fr;
-    }
+    font-size: 0.9375rem;
 }
 
 /* --- Contact Form --- */
