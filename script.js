@@ -77,25 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Hero countdown animation ---
-    const heroCountdown = document.getElementById('heroCountdown');
-    let countdownValue = 18;
-    let countdownDirection = -1;
+    // --- Screenshot carousel ---
+    const screenshots = document.querySelectorAll('.iphone-screenshot');
+    const dots = document.querySelectorAll('.screenshot-dot');
+    let currentScreen = 0;
 
-    setInterval(() => {
-        countdownValue += countdownDirection;
-        if (countdownValue <= 0) {
-            countdownValue = 0;
-            countdownDirection = 0;
-            setTimeout(() => {
-                countdownValue = 18;
-                countdownDirection = -1;
-            }, 2000);
-        }
-        if (heroCountdown) {
-            heroCountdown.textContent = countdownValue;
-        }
-    }, 1000);
+    function showScreen(index) {
+        screenshots.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        screenshots[index]?.classList.add('active');
+        dots[index]?.classList.add('active');
+        currentScreen = index;
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            showScreen(parseInt(dot.dataset.index));
+        });
+    });
+
+    if (screenshots.length > 1) {
+        setInterval(() => {
+            showScreen((currentScreen + 1) % screenshots.length);
+        }, 4000);
+    }
 
     // --- Crossing comparison animation ---
     const comparisonSection = document.getElementById('problem');
