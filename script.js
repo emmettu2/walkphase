@@ -261,6 +261,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updatePathway('existing');
 
+    // --- Rhythm animation ---
+    const rhythmVisual = document.getElementById('rhythmVisual');
+    if (rhythmVisual) {
+        const beats = rhythmVisual.querySelectorAll('.rhythm-beat');
+        const connectors = rhythmVisual.querySelectorAll('.rhythm-connector');
+        let rhythmStarted = false;
+
+        function setRhythmStep(step) {
+            beats.forEach((beat, i) => {
+                beat.classList.remove('active', 'past');
+                if (i === step) beat.classList.add('active');
+                else if (i < step) beat.classList.add('past');
+            });
+            connectors.forEach((conn, i) => {
+                if (i < step) conn.classList.add('filled');
+                else conn.classList.remove('filled');
+            });
+        }
+
+        function runRhythmCycle() {
+            setRhythmStep(0);
+            setTimeout(() => setRhythmStep(1), 1200);
+            setTimeout(() => setRhythmStep(2), 2400);
+            setTimeout(() => {
+                beats.forEach(b => b.classList.remove('active', 'past'));
+                connectors.forEach(c => c.classList.remove('filled'));
+                setTimeout(runRhythmCycle, 600);
+            }, 4000);
+        }
+
+        const rhythmObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !rhythmStarted) {
+                    rhythmStarted = true;
+                    runRhythmCycle();
+                }
+            });
+        }, { threshold: 0.4 });
+
+        rhythmObserver.observe(rhythmVisual);
+    }
+
     // --- Smooth scroll for anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
