@@ -14,7 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demo.css">
     <noscript>
         <style>
             .fade-up { opacity: 1 !important; transform: none !important; }
@@ -127,6 +129,19 @@
             <div class="c-hero-ctas" id="heroCtas">
                 <a href="#how-it-works" class="btn btn-primary btn-lg c-btn-glow">See how it works</a>
                 <a href="#contact" class="btn btn-secondary btn-lg c-btn-ghost">Explore a pilot</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DEMO -->
+    <section class="section" id="app-demo">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2 class="section-title">See it in action.</h2>
+                <p class="section-subtitle">Explore real Manhattan intersections. Tap to see live signal countdowns, safety analysis, and crossing insights.</p>
+            </div>
+            <div class="demo-wrapper fade-up delay-1">
+                <div class="demo-phone-frame" id="appDemo"></div>
             </div>
         </div>
     </section>
@@ -741,6 +756,8 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
+    <script src="demo.js"></script>
 </body>
 </html>

@@ -1,0 +1,876 @@
+/* ============================================
+   WalkPhase Interactive Demo — Styles
+   ============================================ */
+
+/* Demo section */
+#app-demo {
+    padding: 80px 0 100px;
+    background: #0a0a0c;
+}
+
+#app-demo .section-title {
+    color: #fff;
+}
+
+#app-demo .section-subtitle {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Wrapper — centers the phone */
+.demo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+}
+
+/* Phone frame */
+.demo-phone-frame {
+    width: 375px;
+    height: 812px;
+    background: #0f0f14;
+    border-radius: 48px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 40px 80px rgba(0, 0, 0, 0.6),
+        0 0 120px rgba(0, 255, 136, 0.04);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Dynamic Island notch */
+.demo-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 34px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+/* Status bar */
+.demo-status-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 28px 6px;
+    z-index: 90;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.demo-status-time {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.demo-status-icons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px;
+}
+
+/* Screen container */
+.demo-screen {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    right: 0;
+    bottom: 82px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.demo-screen::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tab content panels */
+.demo-tab-content {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.demo-tab-content.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Tab bar */
+.demo-tab-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 82px;
+    background: rgba(15, 15, 20, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 10px;
+    z-index: 80;
+}
+
+.demo-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 4px 16px;
+    color: rgba(255, 255, 255, 0.35);
+    transition: color 0.2s;
+    font-family: inherit;
+}
+
+.demo-tab.active {
+    color: #33E680;
+}
+
+.demo-tab:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.demo-tab.active:hover {
+    color: #33E680;
+}
+
+.demo-tab svg {
+    width: 24px;
+    height: 24px;
+}
+
+.demo-tab-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* ---- MAP TAB (Discover) ---- */
+.demo-map-container {
+    position: absolute;
+    inset: 0;
+}
+
+.demo-map-container .leaflet-container {
+    width: 100%;
+    height: 100%;
+    background: #0f0f14;
+}
+
+/* Override leaflet attribution */
+.demo-map-container .leaflet-control-attribution {
+    display: none;
+}
+
+.demo-map-container .leaflet-control-zoom {
+    display: none;
+}
+
+/* Map header overlay */
+.demo-map-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px 12px;
+    background: linear-gradient(to bottom, rgba(15,15,20,0.9) 0%, transparent 100%);
+    z-index: 500;
+}
+
+.demo-map-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+.demo-map-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+}
+
+/* Map markers */
+.demo-marker-active {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #33E680;
+    border: 2px solid rgba(51, 230, 128, 0.3);
+    box-shadow: 0 0 12px rgba(51, 230, 128, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.demo-marker-active:hover {
+    transform: scale(1.3);
+}
+
+.demo-marker-inactive {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Map popup */
+.demo-map-popup .leaflet-popup-content-wrapper {
+    background: rgba(25, 25, 32, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    color: #fff;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.demo-map-popup .leaflet-popup-content {
+    margin: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.demo-map-popup .leaflet-popup-tip {
+    background: rgba(25, 25, 32, 0.95);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.demo-popup-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.demo-popup-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.demo-popup-score.safe { background: rgba(51,230,128,0.12); color: #33E680; }
+.demo-popup-score.marginal { background: rgba(255,166,0,0.12); color: #FFA600; }
+.demo-popup-score.at-risk { background: rgba(242,64,64,0.12); color: #F24040; }
+
+.demo-popup-link {
+    display: block;
+    text-align: center;
+    padding: 8px 0 2px;
+    color: #33E680;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 8px;
+}
+
+.demo-popup-link:hover {
+    text-decoration: underline;
+}
+
+/* ---- SIGNAL TAB ---- */
+.demo-signal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px 20px;
+    min-height: 100%;
+}
+
+.demo-signal-intersection {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.demo-signal-bucket {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* Countdown ring */
+.demo-countdown-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 28px 0 20px;
+}
+
+.demo-countdown-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.demo-countdown-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 6;
+}
+
+.demo-countdown-ring {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke 0.3s;
+}
+
+.demo-countdown-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+}
+
+.demo-countdown-number {
+    font-size: 64px;
+    font-weight: 200;
+    color: #fff;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.3s;
+}
+
+.demo-countdown-number.flash {
+    animation: demo-flash 1s ease infinite;
+}
+
+@keyframes demo-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.demo-countdown-phase {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    transition: color 0.3s;
+}
+
+/* Crossing state dots */
+.demo-crossing-state {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.demo-state-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.demo-state-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.demo-state-dot.active {
+    background: #33E680;
+    box-shadow: 0 0 8px rgba(51, 230, 128, 0.4);
+}
+
+.demo-state-dot.completed {
+    background: rgba(51, 230, 128, 0.4);
+}
+
+.demo-state-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.demo-state-label.active {
+    color: #33E680;
+}
+
+.demo-state-line {
+    width: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 18px;
+}
+
+/* Safety badge */
+.demo-safety-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 12px;
+    width: 100%;
+    max-width: 280px;
+}
+
+.demo-safety-score {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.demo-safety-score.safe { color: #33E680; }
+.demo-safety-score.marginal { color: #FFA600; }
+.demo-safety-score.at-risk { color: #F24040; }
+
+.demo-safety-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.3;
+}
+
+/* View details link */
+.demo-view-details {
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #33E680;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    padding: 8px 16px;
+}
+
+.demo-view-details:hover {
+    text-decoration: underline;
+}
+
+/* ---- INSIGHTS TAB ---- */
+.demo-insights {
+    padding: 20px 16px 20px;
+}
+
+.demo-insights-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+/* Glass card */
+.demo-glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.demo-card-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* Walking speed card */
+.demo-speed-value {
+    font-size: 36px;
+    font-weight: 200;
+    color: #fff;
+    line-height: 1;
+}
+
+.demo-speed-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 4px;
+}
+
+/* Crossings stats */
+.demo-stats-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.demo-stat-item {
+    flex: 1;
+    text-align: center;
+}
+
+.demo-stat-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.demo-stat-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 2px;
+}
+
+/* Intersection list */
+.demo-int-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.demo-int-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.demo-int-item:last-child {
+    border-bottom: none;
+}
+
+.demo-int-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.demo-int-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.demo-int-dot.safe { background: #33E680; }
+.demo-int-dot.marginal { background: #FFA600; }
+.demo-int-dot.at-risk { background: #F24040; }
+
+.demo-int-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.demo-int-count {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Recent crossings */
+.demo-crossing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.demo-crossing-item:last-child {
+    border-bottom: none;
+}
+
+.demo-crossing-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.demo-crossing-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.demo-crossing-date {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.demo-crossing-right {
+    text-align: right;
+}
+
+.demo-crossing-duration {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.demo-crossing-speed {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---- DETAIL OVERLAY ---- */
+.demo-detail-overlay {
+    position: absolute;
+    inset: 0;
+    background: #0f0f14;
+    z-index: 600;
+    overflow-y: auto;
+    scrollbar-width: none;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.demo-detail-overlay.visible {
+    transform: translateY(0);
+}
+
+.demo-detail-overlay::-webkit-scrollbar {
+    display: none;
+}
+
+/* Detail back button */
+.demo-detail-back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 16px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #33E680;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+.demo-detail-back:hover {
+    text-decoration: underline;
+}
+
+/* Health banner */
+.demo-health-banner {
+    margin: 8px 16px 16px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.demo-health-banner.safe { background: rgba(51,230,128,0.1); border: 1px solid rgba(51,230,128,0.15); }
+.demo-health-banner.marginal { background: rgba(255,166,0,0.1); border: 1px solid rgba(255,166,0,0.15); }
+.demo-health-banner.at-risk { background: rgba(242,64,64,0.1); border: 1px solid rgba(242,64,64,0.15); }
+
+.demo-health-score {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.demo-health-banner.safe .demo-health-score { color: #33E680; }
+.demo-health-banner.marginal .demo-health-score { color: #FFA600; }
+.demo-health-banner.at-risk .demo-health-score { color: #F24040; }
+
+.demo-health-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.demo-health-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.demo-health-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+}
+
+/* Detail title */
+.demo-detail-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    padding: 0 16px 16px;
+    letter-spacing: -0.02em;
+}
+
+/* Detail content */
+.demo-detail-content {
+    padding: 0 16px 100px;
+}
+
+/* Stats grid */
+.demo-detail-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.demo-detail-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+.demo-detail-stat-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.demo-detail-stat-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+}
+
+/* Clearance analysis */
+.demo-clearance {
+    margin-bottom: 16px;
+}
+
+.demo-clearance-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.demo-clearance-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.demo-clearance-info-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+}
+
+.demo-clearance-info-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.demo-clearance-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.demo-clearance-row:last-child {
+    border-bottom: none;
+}
+
+.demo-clearance-profile {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.demo-clearance-speed {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+}
+
+.demo-clearance-needed {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+}
+
+.demo-clearance-verdict {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.demo-clearance-verdict.pass { color: #33E680; }
+.demo-clearance-verdict.fail { color: #F24040; }
+
+/* Detail recent crossings */
+.demo-detail-crossings-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin: 16px 0 8px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 480px) {
+    .demo-phone-frame {
+        width: 100%;
+        max-width: 375px;
+        height: 85vh;
+        max-height: 812px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .demo-notch {
+        display: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .demo-phone-frame {
+        width: 340px;
+        height: 736px;
+        border-radius: 40px;
+    }
+}
