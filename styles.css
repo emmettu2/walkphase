@@ -1083,18 +1083,42 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.2);
     margin: 8px 0;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
 }
 
 .rhythm-beat.active .rhythm-circle {
     background: rgba(51, 230, 128, 0.1);
-    color: #33e680;
 }
 
-.rhythm-beat.past .rhythm-circle {
-    color: rgba(51, 230, 128, 0.45);
+.rhythm-icon {
+    width: 32px;
+    height: auto;
+    position: absolute;
+    transition: opacity 0.5s ease;
+}
+
+.rhythm-icon-green {
+    opacity: 0;
+}
+
+.rhythm-icon-grey {
+    opacity: 0.5;
+}
+
+.rhythm-beat.active .rhythm-icon-green,
+.rhythm-beat.past .rhythm-icon-green {
+    opacity: 1;
+}
+
+.rhythm-beat.active .rhythm-icon-grey,
+.rhythm-beat.past .rhythm-icon-grey {
+    opacity: 0;
+}
+
+.rhythm-beat.past .rhythm-icon-green {
+    opacity: 0.5;
 }
 
 .rhythm-label {
