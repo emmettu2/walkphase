@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    updatePathway('existing');
+    updatePathway('none');
 
     // --- Rhythm animation ---
     const rhythmVisual = document.getElementById('rhythmVisual');
