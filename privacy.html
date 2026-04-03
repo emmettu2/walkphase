@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalkPhase — Privacy Policy</title>
+    <meta name="description" content="WalkPhase privacy policy. Your crossing data stays on your device.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0d0e10;
+            color: #e0e0e0;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 0 80px;
+        }
+        a { color: #33E680; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { display: inline-block; margin-bottom: 32px; font-size: 14px; color: #33E680; }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .effective {
+            font-size: 14px;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 40px;
+        }
+        .short-version {
+            background: rgba(51, 230, 128, 0.06);
+            border: 1px solid rgba(51, 230, 128, 0.15);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+        .short-version ul {
+            list-style: none;
+            padding: 0;
+        }
+        .short-version li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+        }
+        .short-version li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #33E680;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+        p, li {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+        }
+        ul { padding-left: 20px; margin-bottom: 16px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        th {
+            text-align: left;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.6);
+        }
+        .not-list { margin-top: 8px; }
+        .not-list li {
+            color: rgba(255,255,255,0.5);
+            padding: 4px 0;
+        }
+        .not-list li strong { color: rgba(255,255,255,0.7); }
+        .contact-box {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: center;
+        }
+        .contact-box a {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.25);
+            margin-top: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back">&larr; walkphase.com</a>
+
+        <h1>Privacy Policy</h1>
+        <p class="effective">Effective date: 1 April 2026</p>
+
+        <p>WalkPhase is a pedestrian crossing safety app for iPhone and Apple Watch. We built it to help you cross the road safely — not to collect your data. This policy explains exactly what happens with your information when you use the app.</p>
+
+        <div class="short-version">
+            <ul>
+                <li><strong>Your crossing data stays on your device.</strong> We never upload your GPS tracks, accelerometer readings, or intersection list.</li>
+                <li><strong>No accounts, no sign-in, no passwords.</strong> WalkPhase does not know who you are.</li>
+                <li><strong>No advertising. No tracking. No data sales.</strong> We do not use ad SDKs, the IDFA, or fingerprinting of any kind.</li>
+                <li><strong>Anonymous analytics only.</strong> We count events (like "a crossing was completed") — never locations or identities.</li>
+            </ul>
+        </div>
+
+        <h2>1. Data that never leaves your device</h2>
+        <p>The following data is created and stored entirely on your iPhone or Apple Watch. WalkPhase does not transmit, upload, or have any server-side access to it:</p>
+        <table>
+            <tr><th>Data</th><th>Purpose</th></tr>
+            <tr><td>GPS location tracks</td><td>Record your route during a crossing</td></tr>
+            <tr><td>Accelerometer & motion data</td><td>Gait analysis and walking/stationary detection</td></tr>
+            <tr><td>Crossing records</td><td>Track your crossing history and calculate safety verdicts</td></tr>
+            <tr><td>Intersection list</td><td>Store your saved crossings</td></tr>
+            <tr><td>Signal timing plans</td><td>Learn and predict pedestrian signal phases</td></tr>
+            <tr><td>Debug logs</td><td>On-device troubleshooting only</td></tr>
+            <tr><td>Mobility profile (if set)</td><td>Personalise clearance calculations</td></tr>
+        </table>
+        <p>This data is yours. It lives on your device and in your personal iCloud account. We cannot see it, request it, or retrieve it.</p>
+
+        <h2>2. Anonymous analytics</h2>
+        <p>We use <a href="https://telemetrydeck.com" target="_blank">TelemetryDeck</a>, an EU-based, privacy-first analytics service, to understand how WalkPhase is used in aggregate. TelemetryDeck processes data in <strong>Germany</strong> and is fully GDPR-compliant.</p>
+        <p><strong>What we receive:</strong></p>
+        <ul>
+            <li>App opened, onboarding completed</li>
+            <li>Crossing completed (duration and safety verdict — <strong>no coordinates</strong>)</li>
+            <li>Metro area (city name only, determined once on first launch)</li>
+        </ul>
+        <p><strong>How identification is prevented:</strong></p>
+        <ul>
+            <li>TelemetryDeck uses <strong>double-hashed anonymous identifiers</strong>. They cannot identify individual users, and neither can we.</li>
+            <li>No Apple Identifier for Advertisers (IDFA) is collected.</li>
+            <li>No device fingerprinting is performed.</li>
+        </ul>
+
+        <h2>3. Safety reports</h2>
+        <p>WalkPhase lets you email safety reports to road authorities. When you choose to send a report:</p>
+        <ul>
+            <li>The email is composed and sent through <strong>your own Mail app</strong> on your device.</li>
+            <li>WalkPhase does not see, store, or process the email content.</li>
+            <li>WalkPhase is CC'd on the report (team@walkphase.com) so we can track which crossings users are raising concerns about. You can remove the CC before sending.</li>
+        </ul>
+        <p>No report is ever sent without your explicit action.</p>
+
+        <h2>4. Permissions</h2>
+        <table>
+            <tr><th>Permission</th><th>Why we need it</th></tr>
+            <tr><td>Location (Always)</td><td>Geofence detection allows automatic crossing tracking even in the background. You can revoke this at any time.</td></tr>
+            <tr><td>Motion & Fitness</td><td>Detects whether you are walking or stationary, and records accelerometer data for gait analysis.</td></tr>
+            <tr><td>Notifications</td><td>Approach alerts, crossing results, and optional weekly summaries.</td></tr>
+        </table>
+        <p>You can deny or revoke any permission at any time. WalkPhase will still function with reduced capability.</p>
+
+        <h2>5. iCloud backup</h2>
+        <p>Intersection data and crossing records are backed up to your personal iCloud account. Accelerometer data is <strong>not</strong> backed up (it exceeds iCloud size limits). This is your personal iCloud storage — WalkPhase has no access to your iCloud account.</p>
+
+        <h2>6. What we do NOT do</h2>
+        <ul class="not-list">
+            <li>We do <strong>not</strong> create user accounts or profiles.</li>
+            <li>We do <strong>not</strong> collect your name, email, or any personal identifiers.</li>
+            <li>We do <strong>not</strong> use advertising SDKs or display ads.</li>
+            <li>We do <strong>not</strong> use the IDFA or any cross-app tracking.</li>
+            <li>We do <strong>not</strong> sell, rent, or share your data with third parties.</li>
+            <li>We do <strong>not</strong> use fingerprinting techniques.</li>
+            <li>We have <strong>no</strong> social features that could expose your identity.</li>
+        </ul>
+
+        <h2>7. Future: community data</h2>
+        <p>In a future update, WalkPhase may offer an optional feature to share anonymous, aggregated signal timing data. If introduced:</p>
+        <ul>
+            <li>Only aggregated timing data would be shared (e.g., "average walk phase is 12 seconds").</li>
+            <li><strong>No</strong> individual crossing records, GPS tracks, or personal information would be included.</li>
+            <li>The feature would be <strong>opt-in</strong> with a clear toggle.</li>
+        </ul>
+        <p>This policy will be updated before any such feature is released.</p>
+
+        <h2>8. Children's privacy</h2>
+        <p>WalkPhase does not knowingly collect any personal information from children under 16. Since the app collects no personal information from anyone, no age-gating is required.</p>
+
+        <h2>9. Your rights under GDPR</h2>
+        <p>WalkPhase is developed in Dublin, Ireland. Because almost all data remains on your device, your rights are largely self-service:</p>
+        <ul>
+            <li><strong>Access & portability:</strong> Your crossing data is on your device. You own it.</li>
+            <li><strong>Deletion:</strong> Delete the app to remove all local data.</li>
+            <li><strong>Analytics opt-out:</strong> Contact us and we will exclude your session from future processing.</li>
+        </ul>
+        <p>If you have any GDPR-related request, contact us and we will respond within 30 days.</p>
+
+        <h2>10. Changes to this policy</h2>
+        <p>If we make material changes, we will update the effective date and notify users via an in-app notice. The current version is always available at <a href="/privacy">walkphase.com/privacy</a>.</p>
+
+        <div class="contact-box">
+            <p>Questions, concerns, or GDPR requests:</p>
+            <a href="mailto:team@walkphase.com">team@walkphase.com</a>
+            <p style="margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.3);">WalkPhase is developed by Emmett Murphy, Dublin, Ireland.</p>
+        </div>
+
+        <p class="footer-note">This policy was last updated on 1 April 2026.</p>
+    </div>
+</body>
+</html>
