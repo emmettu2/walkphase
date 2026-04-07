@@ -115,11 +115,45 @@
         .ss4a-badge-large { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 14px; font-weight: 600; color: white; margin-bottom: 32px; }
         .ss4a-badge-large .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-light); }
 
+        /* App Preview */
+        .app-preview { padding: 80px 24px; background: var(--bg-light); text-align: center; }
+        .app-preview h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+        .app-preview-subtitle { font-size: 17px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+
+        .iphone-frame {
+            width: 280px; margin: 0 auto; background: #1a1a1a; border-radius: 44px; padding: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.08), inset 0 0 0 1px rgba(255,255,255,0.05);
+            position: relative;
+        }
+        .iphone-notch { width: 90px; height: 24px; background: #1a1a1a; border-radius: 0 0 14px 14px; margin: 0 auto; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 3; }
+        .iphone-screen { border-radius: 36px; overflow: hidden; position: relative; background: #000; }
+        .iphone-screenshot { display: block; width: 100%; height: auto; border-radius: 36px; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .iphone-screenshot.active { position: relative; opacity: 1; }
+        .iphone-home-bar { width: 100px; height: 4px; background: rgba(255,255,255,0.25); border-radius: 2px; margin: 8px auto 4px; }
+        .screenshot-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+        .screenshot-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s; }
+        .screenshot-dot.active { background: var(--green-deep); transform: scale(1.25); }
+        .screenshot-dot:hover { background: var(--green-mid); }
+
+        /* Data Capabilities */
+        .data-section { padding: 80px 24px; }
+        .data-section h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; text-align: center; margin-bottom: 12px; letter-spacing: -0.02em; }
+        .data-subtitle { font-size: 17px; color: var(--text-secondary); text-align: center; max-width: 650px; margin: 0 auto 48px; line-height: 1.7; }
+        .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 800px; margin: 0 auto 48px; }
+        .data-card { padding: 28px 20px; background: var(--bg-light); border-radius: 16px; border: 1px solid rgba(0,0,0,0.04); text-align: center; }
+        .data-card-icon { font-size: 28px; margin-bottom: 12px; }
+        .data-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+        .data-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+        .data-insight { max-width: 700px; margin: 0 auto; padding: 28px 32px; background: #0a0f0d; color: white; border-radius: 16px; }
+        .data-insight-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green-light); margin-bottom: 10px; }
+        .data-insight p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7; margin: 0; }
+
         /* Responsive */
         @media (max-width: 768px) {
             .problem-stats { grid-template-columns: 1fr; }
             .ss4a-grid { grid-template-columns: 1fr; }
             .diff-grid { grid-template-columns: 1fr; }
+            .data-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -142,6 +176,34 @@
             <h1>Pedestrian signal intelligence<br>for <span class="green">Arlington's Vision Zero<br>Action Plan</span></h1>
             <p>Arlington County is updating its Vision Zero Action Plan. WalkPhase provides the real-world pedestrian crossing data you need to identify where signal timing falls short &mdash; and to build a stronger, data-driven plan.</p>
             <a href="#how-it-helps" class="hero-cta">See how WalkPhase helps &darr;</a>
+        </div>
+    </section>
+
+    <!-- App Preview -->
+    <section class="app-preview">
+        <div class="container">
+            <h2>See the app in action</h2>
+            <p class="app-preview-subtitle">WalkPhase captures real pedestrian crossing data from a standard iPhone or Apple Watch &mdash; no infrastructure required.</p>
+            <div class="iphone-frame">
+                <div class="iphone-notch"></div>
+                <div class="iphone-screen">
+                    <img src="../screenshots/screen1.PNG" alt="WalkPhase — Live signal countdown" class="iphone-screenshot active" data-index="0">
+                    <img src="../screenshots/screen2.PNG" alt="WalkPhase — Discover map with intersections" class="iphone-screenshot" data-index="1">
+                    <img src="../screenshots/screen3.PNG" alt="WalkPhase — Intersection safety analysis" class="iphone-screenshot" data-index="2">
+                    <img src="../screenshots/screen4.PNG" alt="WalkPhase — Crash history and crossing heatmap" class="iphone-screenshot" data-index="3">
+                    <img src="../screenshots/screen5.PNG" alt="WalkPhase — Crossing detail with path and speed" class="iphone-screenshot" data-index="4">
+                    <img src="../screenshots/screen6.PNG" alt="WalkPhase — Safety report for road authority" class="iphone-screenshot" data-index="5">
+                </div>
+                <div class="iphone-home-bar"></div>
+            </div>
+            <div class="screenshot-dots">
+                <button class="screenshot-dot active" data-index="0"></button>
+                <button class="screenshot-dot" data-index="1"></button>
+                <button class="screenshot-dot" data-index="2"></button>
+                <button class="screenshot-dot" data-index="3"></button>
+                <button class="screenshot-dot" data-index="4"></button>
+                <button class="screenshot-dot" data-index="5"></button>
+            </div>
         </div>
     </section>
 
@@ -193,6 +255,48 @@
                 <h3>Strengthen Grant Applications</h3>
                 <p>WalkPhase data gives your SS4A application real evidence. Move beyond crash counts to proactive measurement of crossing safety gaps.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Data Capabilities -->
+    <section class="data-section">
+        <h2>The data WalkPhase collects</h2>
+        <p class="data-subtitle">Every crossing generates a rich dataset that goes far beyond crash counts &mdash; giving Arlington proactive, evidence-based insight into pedestrian safety.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <div class="data-card-icon">&#9201;</div>
+                <h3>At-Kerb Wait Times</h3>
+                <p>How long pedestrians wait at each intersection before crossing. Long waits drive non-compliance and unsafe crossings.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-card-icon">&#128694;</div>
+                <h3>Crossing Times</h3>
+                <p>Actual time taken to cross, measured per-crossing. Reveals whether the walk phase is sufficient for real pedestrians.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-card-icon">&#128204;</div>
+                <h3>Crossing Paths</h3>
+                <p>GPS-traced routes across the intersection. See where pedestrians actually walk &mdash; not where signals assume they do.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-card-icon">&#128308;</div>
+                <h3>Observed Signal Timing</h3>
+                <p>Walk phase durations recorded in the field. Compare observed timing against MUTCD standards and crossing distances.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-card-icon">&#9889;</div>
+                <h3>Walking Speed</h3>
+                <p>Real walking speeds from real people. Identify intersections where the assumed 1.0 m/s design speed leaves pedestrians stranded mid-crossing.</p>
+            </div>
+            <div class="data-card">
+                <div class="data-card-icon">&#128202;</div>
+                <h3>Signal Compliance</h3>
+                <p>Track whether pedestrians cross with or against the signal. Compliance data reveals where signal timing is failing the people it's meant to protect.</p>
+            </div>
+        </div>
+        <div class="data-insight">
+            <div class="data-insight-label">Research insight</div>
+            <p>Pedestrian signal compliance decreases significantly when wait times exceed 30&ndash;40 seconds, with pedestrians often initiating crossings against the signal to reduce delay. Crossing time compliance is largely influenced by walking speed (designed around 1.15&ndash;1.2 m/s), road width, and the presence of countdown timers. WalkPhase measures all of these variables at every crossing.</p>
         </div>
     </section>
 
@@ -283,6 +387,34 @@
     <footer class="footer">
         <p>WalkPhase &mdash; Pedestrian Signal Timing Intelligence &nbsp;|&nbsp; <a href="https://walkphase.com">walkphase.com</a> &nbsp;|&nbsp; Two U.S. patents granted</p>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const screenshots = document.querySelectorAll('.iphone-screenshot');
+        const dots = document.querySelectorAll('.screenshot-dot');
+        let currentScreen = 0;
+
+        function showScreen(index) {
+            screenshots.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            screenshots[index]?.classList.add('active');
+            dots[index]?.classList.add('active');
+            currentScreen = index;
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showScreen(parseInt(dot.dataset.index));
+            });
+        });
+
+        if (screenshots.length > 1) {
+            setInterval(() => {
+                showScreen((currentScreen + 1) % screenshots.length);
+            }, 4000);
+        }
+    });
+    </script>
 
 </body>
 </html>
