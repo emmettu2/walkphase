@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VWZL59CPCB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VWZL59CPCB');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalkPhase Demo — Pedestrian Signal Timing Intelligence</title>
+    <meta name="description" content="See how WalkPhase measures real pedestrian crossing performance at signalized intersections. No hardware required.">
+    <meta property="og:title" content="WalkPhase Demo">
+    <meta property="og:description" content="See how WalkPhase measures real pedestrian crossing performance at signalized intersections.">
+    <meta property="og:type" content="video.other">
+    <meta property="og:url" content="https://walkphase.com/demo">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --green-deep: #166534; --green-mid: #15803d; --green-light: #22c55e;
+            --green-pale: #dcfce7; --bg-dark: #0a0f0d; --text-white: #ffffff;
+        }
+        html { -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-dark); color: var(--text-white); min-height: 100vh; display: flex; flex-direction: column; }
+
+        .nav { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { height: 28px; width: auto; filter: brightness(0) invert(1); }
+        .nav-link { font-size: 13px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+        .nav-link:hover { color: rgba(255,255,255,0.9); }
+
+        .main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; }
+        .video-container { max-width: 900px; width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        video { width: 100%; display: block; }
+
+        .info { max-width: 900px; width: 100%; margin-top: 32px; text-align: center; }
+        .info h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+        .info p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto 24px; line-height: 1.6; }
+        .cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--green-deep); color: white; border-radius: 12px; font-weight: 600; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+        .cta:hover { background: var(--green-mid); }
+
+        .footer { padding: 24px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.25); }
+        .footer a { color: var(--green-light); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="https://walkphase.com"><img src="../walkphase_logo.svg" alt="WalkPhase" class="nav-logo"></a>
+            <a href="https://walkphase.com" class="nav-link">&larr; Back to walkphase.com</a>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="video-container">
+            <video controls preload="metadata" playsinline poster="">
+                <source src="../demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="info">
+            <h1>Pedestrian Signal Timing Intelligence</h1>
+            <p>WalkPhase measures real pedestrian crossing performance at signalized intersections. No hardware. No roadside infrastructure. Built for Safe Streets for All.</p>
+            <a href="mailto:emmett@walkphase.com?subject=WalkPhase%20Demo%20Follow-up" class="cta">Get in touch &rarr;</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>WalkPhase &nbsp;|&nbsp; <a href="https://walkphase.com">walkphase.com</a> &nbsp;|&nbsp; Two U.S. patents granted</p>
+    </footer>
+</body>
+</html>
