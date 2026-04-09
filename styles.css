@@ -2154,3 +2154,17 @@ img {
         align-items: center;
     }
 }
+
+/* --- Video Demo --- */
+.video-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.video-wrapper video {
+    width: 100%;
+    display: block;
+}
