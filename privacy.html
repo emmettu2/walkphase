@@ -149,7 +149,7 @@
         <p>The following data is created and stored on your iPhone or Apple Watch. WalkPhase does not upload raw GPS tracks or accelerometer readings:</p>
         <table>
             <tr><th>Data</th><th>Purpose</th><th>Shared?</th></tr>
-            <tr><td>GPS location tracks</td><td>Record your route during a crossing</td><td>No — device only</td></tr>
+            <tr><td>Full GPS location tracks</td><td>Record your complete route</td><td>No — device only. Only the kerb-to-kerb crossing segment (~12 seconds) is shared anonymously.</td></tr>
             <tr><td>Accelerometer & motion data</td><td>Gait analysis and walking/stationary detection</td><td>No — device only</td></tr>
             <tr><td>Pedometer (steps & distance)</td><td>Validate crossings and measure stride</td><td>No — device only</td></tr>
             <tr><td>Debug logs</td><td>On-device troubleshooting only</td><td>No — device only</td></tr>
@@ -162,6 +162,7 @@
             <tr><td>Intersection names & coordinates</td><td>Map shared crossings for all users</td><td>No</td></tr>
             <tr><td>Signal timing plans</td><td>Share observed signal phases so new users get countdown timers immediately</td><td>No</td></tr>
             <tr><td>Crossing summaries (count, avg duration, avg wait)</td><td>Build community safety assessments</td><td>No — linked to anonymous token only</td></tr>
+            <tr><td>Crossing GPS path (kerb to kerb only)</td><td>Show how pedestrians actually cross — supports agency safety analysis</td><td>No — anonymous, ~12 seconds of data per crossing</td></tr>
         </table>
         <p>Community data uses a <strong>hashed anonymous token</strong> derived from your device identifier. We cannot trace this token back to you, your Apple ID, or your device. This data is stored on Apple's servers under Apple's <a href="https://www.apple.com/legal/privacy/" target="_blank">privacy policy</a>.</p>
 
