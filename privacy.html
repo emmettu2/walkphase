@@ -131,34 +131,51 @@
         <a href="/" class="back">&larr; walkphase.com</a>
 
         <h1>Privacy Policy</h1>
-        <p class="effective">Effective date: 1 April 2026</p>
+        <p class="effective">Effective date: 16 April 2026</p>
 
         <p>WalkPhase is a pedestrian crossing safety app for iPhone and Apple Watch. We built it to help you cross the road safely — not to collect your data. This policy explains exactly what happens with your information when you use the app.</p>
 
         <div class="short-version">
             <ul>
-                <li><strong>Your crossing data stays on your device.</strong> We never upload your GPS tracks, accelerometer readings, or intersection list.</li>
-                <li><strong>No accounts, no sign-in, no passwords.</strong> WalkPhase does not know who you are.</li>
+                <li><strong>Your GPS tracks and accelerometer data stay on your device.</strong> We never upload raw location traces or motion data.</li>
+                <li><strong>Optional account via Sign in with Apple.</strong> The app works fully without signing in. Your Apple ID email is only used for account recovery.</li>
+                <li><strong>Community data is anonymous.</strong> Signal timing and crossing summaries are shared via Apple CloudKit using an anonymous token — no names or identifiable information.</li>
                 <li><strong>No advertising. No tracking. No data sales.</strong> We do not use ad SDKs, the IDFA, or fingerprinting of any kind.</li>
-                <li><strong>Anonymous analytics only.</strong> We count events (like "a crossing was completed") — never locations or identities.</li>
+                <li><strong>You can delete your account and data at any time</strong> from within the app.</li>
             </ul>
         </div>
 
-        <h2>1. Data that never leaves your device</h2>
-        <p>The following data is created and stored entirely on your iPhone or Apple Watch. WalkPhase does not transmit, upload, or have any server-side access to it:</p>
+        <h2>1. Data that stays on your device</h2>
+        <p>The following data is created and stored on your iPhone or Apple Watch. WalkPhase does not upload raw GPS tracks or accelerometer readings:</p>
         <table>
-            <tr><th>Data</th><th>Purpose</th></tr>
-            <tr><td>GPS location tracks</td><td>Record your route during a crossing</td></tr>
-            <tr><td>Accelerometer & motion data</td><td>Gait analysis and walking/stationary detection</td></tr>
-            <tr><td>Crossing records</td><td>Track your crossing history and calculate safety verdicts</td></tr>
-            <tr><td>Intersection list</td><td>Store your saved crossings</td></tr>
-            <tr><td>Signal timing plans</td><td>Learn and predict pedestrian signal phases</td></tr>
-            <tr><td>Debug logs</td><td>On-device troubleshooting only</td></tr>
-            <tr><td>Mobility profile (if set)</td><td>Personalise clearance calculations</td></tr>
+            <tr><th>Data</th><th>Purpose</th><th>Shared?</th></tr>
+            <tr><td>GPS location tracks</td><td>Record your route during a crossing</td><td>No — device only</td></tr>
+            <tr><td>Accelerometer & motion data</td><td>Gait analysis and walking/stationary detection</td><td>No — device only</td></tr>
+            <tr><td>Pedometer (steps & distance)</td><td>Validate crossings and measure stride</td><td>No — device only</td></tr>
+            <tr><td>Debug logs</td><td>On-device troubleshooting only</td><td>No — device only</td></tr>
         </table>
-        <p>This data is yours. It lives on your device and in your personal iCloud account. We cannot see it, request it, or retrieve it.</p>
 
-        <h2>2. Anonymous analytics</h2>
+        <h2>2. Community data (Apple CloudKit)</h2>
+        <p>To help all pedestrians benefit from shared signal timing data, WalkPhase uploads <strong>anonymous summaries</strong> to Apple's CloudKit Public Database:</p>
+        <table>
+            <tr><th>Data</th><th>Purpose</th><th>Identifiable?</th></tr>
+            <tr><td>Intersection names & coordinates</td><td>Map shared crossings for all users</td><td>No</td></tr>
+            <tr><td>Signal timing plans</td><td>Share observed signal phases so new users get countdown timers immediately</td><td>No</td></tr>
+            <tr><td>Crossing summaries (count, avg duration, avg wait)</td><td>Build community safety assessments</td><td>No — linked to anonymous token only</td></tr>
+        </table>
+        <p>Community data uses a <strong>hashed anonymous token</strong> derived from your device identifier. We cannot trace this token back to you, your Apple ID, or your device. This data is stored on Apple's servers under Apple's <a href="https://www.apple.com/legal/privacy/" target="_blank">privacy policy</a>.</p>
+
+        <h2>3. Optional account (Sign in with Apple)</h2>
+        <p>WalkPhase works fully without an account. If you choose to sign in:</p>
+        <ul>
+            <li>We use <strong>Sign in with Apple</strong> exclusively — no passwords are stored.</li>
+            <li>Apple provides us with a <strong>stable user identifier</strong> and optionally your <strong>email address</strong> (which may be an Apple relay address).</li>
+            <li>If you provide your name, it is stored locally on your device and optionally included in safety reports you send.</li>
+            <li>Your optional profile (walking speed, accessibility needs, employer) is stored <strong>on your device only</strong>.</li>
+        </ul>
+        <p>Signing in enables data backup via CloudKit and lets you receive credit when your crossing data contributes to a safety improvement.</p>
+
+        <h2>4. Anonymous analytics</h2>
         <p>We use <a href="https://telemetrydeck.com" target="_blank">TelemetryDeck</a>, an EU-based, privacy-first analytics service, to understand how WalkPhase is used in aggregate. TelemetryDeck processes data in <strong>Germany</strong> and is fully GDPR-compliant.</p>
         <p><strong>What we receive:</strong></p>
         <ul>
@@ -173,7 +190,7 @@
             <li>No device fingerprinting is performed.</li>
         </ul>
 
-        <h2>3. Safety reports</h2>
+        <h2>5. Safety reports</h2>
         <p>WalkPhase lets you email safety reports to road authorities. When you choose to send a report:</p>
         <ul>
             <li>The email is composed and sent through <strong>your own Mail app</strong> on your device.</li>
@@ -182,7 +199,7 @@
         </ul>
         <p>No report is ever sent without your explicit action.</p>
 
-        <h2>4. Permissions</h2>
+        <h2>6. Permissions</h2>
         <table>
             <tr><th>Permission</th><th>Why we need it</th></tr>
             <tr><td>Location (Always)</td><td>Geofence detection allows automatic crossing tracking even in the background. You can revoke this at any time.</td></tr>
@@ -191,51 +208,42 @@
         </table>
         <p>You can deny or revoke any permission at any time. WalkPhase will still function with reduced capability.</p>
 
-        <h2>5. iCloud backup</h2>
-        <p>Intersection data and crossing records are backed up to your personal iCloud account. Accelerometer data is <strong>not</strong> backed up (it exceeds iCloud size limits). This is your personal iCloud storage — WalkPhase has no access to your iCloud account.</p>
+        <h2>7. iCloud & data backup</h2>
+        <p>Intersection data and crossing summaries are backed up to Apple CloudKit (public database for community sharing, and iCloud Key-Value Store for personal backup). Raw accelerometer data is <strong>not</strong> backed up (it exceeds size limits). If you sign in, your data can be restored on a new device.</p>
 
-        <h2>6. What we do NOT do</h2>
+        <h2>8. What we do NOT do</h2>
         <ul class="not-list">
-            <li>We do <strong>not</strong> create user accounts or profiles.</li>
-            <li>We do <strong>not</strong> collect your name, email, or any personal identifiers.</li>
+            <li>We do <strong>not</strong> upload your raw GPS tracks or accelerometer data to any server.</li>
             <li>We do <strong>not</strong> use advertising SDKs or display ads.</li>
             <li>We do <strong>not</strong> use the IDFA or any cross-app tracking.</li>
             <li>We do <strong>not</strong> sell, rent, or share your data with third parties.</li>
             <li>We do <strong>not</strong> use fingerprinting techniques.</li>
-            <li>We have <strong>no</strong> social features that could expose your identity.</li>
+            <li>We do <strong>not</strong> require an account to use the app.</li>
         </ul>
 
-        <h2>7. Future: community data</h2>
-        <p>In a future update, WalkPhase may offer an optional feature to share anonymous, aggregated signal timing data. If introduced:</p>
-        <ul>
-            <li>Only aggregated timing data would be shared (e.g., "average walk phase is 12 seconds").</li>
-            <li><strong>No</strong> individual crossing records, GPS tracks, or personal information would be included.</li>
-            <li>The feature would be <strong>opt-in</strong> with a clear toggle.</li>
-        </ul>
-        <p>This policy will be updated before any such feature is released.</p>
+        <h2>9. Children's privacy</h2>
+        <p>WalkPhase does not knowingly collect personal information from children under 16. The app can be used without an account, in which case no personal information is collected.</p>
 
-        <h2>8. Children's privacy</h2>
-        <p>WalkPhase does not knowingly collect any personal information from children under 16. Since the app collects no personal information from anyone, no age-gating is required.</p>
-
-        <h2>9. Your rights under GDPR</h2>
-        <p>WalkPhase is developed in Dublin, Ireland. Because almost all data remains on your device, your rights are largely self-service:</p>
+        <h2>10. Your rights under GDPR</h2>
+        <p>WalkPhase is developed in Cork, Ireland. The Irish Data Protection Commission (DPC) is our supervisory authority.</p>
         <ul>
-            <li><strong>Access & portability:</strong> Your crossing data is on your device. You own it.</li>
-            <li><strong>Deletion:</strong> Delete the app to remove all local data.</li>
+            <li><strong>Access & portability:</strong> Your crossing data is on your device. Community data is anonymous.</li>
+            <li><strong>Deletion:</strong> Use the "Delete Account & Data" button in Settings to remove all local data and your account. Community data (anonymous, cannot be traced to you) remains in CloudKit.</li>
             <li><strong>Analytics opt-out:</strong> Contact us and we will exclude your session from future processing.</li>
+            <li><strong>Rectification:</strong> Edit your profile in Settings at any time.</li>
         </ul>
         <p>If you have any GDPR-related request, contact us and we will respond within 30 days.</p>
 
-        <h2>10. Changes to this policy</h2>
+        <h2>11. Changes to this policy</h2>
         <p>If we make material changes, we will update the effective date and notify users via an in-app notice. The current version is always available at <a href="/privacy">walkphase.com/privacy</a>.</p>
 
         <div class="contact-box">
             <p>Questions, concerns, or GDPR requests:</p>
             <a href="mailto:team@walkphase.com">team@walkphase.com</a>
-            <p style="margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.3);">WalkPhase is developed by Emmett Murphy, Dublin, Ireland.</p>
+            <p style="margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.3);">WalkPhase is developed by Emmett Murphy, Cork, Ireland.</p>
         </div>
 
-        <p class="footer-note">This policy was last updated on 1 April 2026.</p>
+        <p class="footer-note">This policy was last updated on 16 April 2026.</p>
     </div>
 </body>
 </html>
