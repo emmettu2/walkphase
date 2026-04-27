@@ -1928,6 +1928,12 @@ img {
     color: var(--text-muted);
 }
 
+.footer-coalition {
+    margin-top: 8px;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+}
+
 /* --- Final CTA --- */
 .section-cta {
     background: linear-gradient(180deg, var(--bg-white) 0%, var(--green-pale) 100%);
