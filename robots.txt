@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /press
+Disallow: /press/
+Disallow: /story
+Disallow: /story/

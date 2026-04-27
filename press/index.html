@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+    <title>WalkPhase — Press</title>
+    <meta name="description" content="Media resources, story, and assets for journalists.">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --green-deep: #166534; --green-mid: #15803d; --green-light: #22c55e;
+            --green-pale: #dcfce7; --bg-dark: #0a0f0d; --bg-light: #f8fafb;
+            --text-primary: #111827; --text-secondary: #4b5563; --text-muted: #9ca3af;
+            --text-white: #ffffff; --text-white-muted: rgba(255,255,255,0.65);
+            --border: rgba(255,255,255,0.08);
+        }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Embargo banner */
+        .embargo {
+            background: #ef4444;
+            color: white;
+            text-align: center;
+            padding: 10px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Layout */
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+        .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        .nav { padding: 20px 24px; border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { height: 28px; width: auto; filter: brightness(0) invert(1); }
+        .nav-label { font-size: 12px; color: var(--text-white-muted); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+        /* Hero — story-first */
+        .hero { padding: 100px 0 60px; }
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+        .hero h1 .green { color: var(--green-light); }
+        .hero-sub {
+            font-size: 22px;
+            color: var(--text-white-muted);
+            line-height: 1.5;
+            max-width: 620px;
+            font-weight: 400;
+        }
+        .hero-meta {
+            margin-top: 40px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--text-white-muted);
+        }
+        .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+        .hero-meta strong { color: white; font-weight: 600; }
+
+        /* Sections */
+        section { padding: 80px 0; border-top: 1px solid var(--border); }
+        section h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+        }
+        section h2 .green { color: var(--green-light); }
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--green-light);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        section p {
+            color: var(--text-white-muted);
+            margin-bottom: 24px;
+            font-size: 18px;
+        }
+        section p strong { color: white; font-weight: 600; }
+
+        /* Quote — copyable */
+        .pullquote {
+            margin: 40px 0;
+            padding: 32px 32px 32px 36px;
+            background: rgba(34,197,94,0.06);
+            border-left: 3px solid var(--green-light);
+            border-radius: 0 12px 12px 0;
+            position: relative;
+        }
+        .pullquote-text {
+            font-size: 22px;
+            font-weight: 500;
+            color: white;
+            line-height: 1.5;
+            margin: 0 0 12px;
+        }
+        .pullquote-attr {
+            font-size: 13px;
+            color: var(--text-white-muted);
+            letter-spacing: 0.5px;
+        }
+        .pullquote-copy {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 11px;
+            color: var(--text-white-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .pullquote-copy:hover { color: white; background: rgba(255,255,255,0.1); }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+        .stat {
+            padding: 28px 24px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--green-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-white-muted);
+            line-height: 1.4;
+        }
+
+        /* Council quote — special treatment */
+        .council-quote {
+            margin: 40px 0;
+            padding: 32px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        .council-quote-eyebrow {
+            font-size: 12px;
+            color: var(--green-light);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .council-quote-text {
+            font-size: 20px;
+            color: white;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .council-quote-source {
+            font-size: 13px;
+            color: var(--text-white-muted);
+        }
+
+        /* Mechanism steps */
+        .steps { display: grid; gap: 16px; margin: 32px 0; }
+        .step { display: flex; gap: 20px; padding: 24px; background: rgba(255,255,255,0.04); border-radius: 14px; border: 1px solid var(--border); }
+        .step-num {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: var(--green-light); color: var(--bg-dark);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; flex-shrink: 0;
+        }
+        .step-body h3 { font-size: 17px; color: white; font-weight: 600; margin-bottom: 6px; }
+        .step-body p { color: var(--text-white-muted); margin: 0; font-size: 15px; }
+
+        /* Assets / downloads */
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .asset {
+            padding: 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.2s;
+        }
+        .asset:hover { background: rgba(255,255,255,0.08); border-color: var(--green-light); }
+        .asset-icon { font-size: 22px; opacity: 0.7; }
+        .asset-body h4 { font-size: 14px; color: white; font-weight: 600; margin-bottom: 4px; }
+        .asset-body p { font-size: 12px; color: var(--text-white-muted); margin: 0; }
+
+        /* Contact */
+        .contact-block {
+            padding: 32px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        .contact-block h3 { font-size: 14px; color: var(--green-light); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+        .contact-block p { font-size: 17px; color: white; margin: 0 0 6px; }
+        .contact-block a { color: var(--green-light); }
+
+        /* Press release block */
+        .press-release {
+            padding: 32px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .press-release-header {
+            font-size: 12px;
+            color: #ef4444;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        .press-release h3 {
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .press-release p { font-size: 15px; }
+
+        /* Footer */
+        .footer {
+            padding: 48px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-white-muted);
+            border-top: 1px solid var(--border);
+        }
+        .footer a { color: var(--green-light); }
+
+        /* Toast on copy */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--green-deep);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 600px) {
+            .hero { padding: 60px 0 40px; }
+            section { padding: 60px 0; }
+            .pullquote { padding: 24px; }
+            .pullquote-text { font-size: 18px; }
+            .stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Embargo banner -->
+    <div class="embargo">
+        Embargoed until [DATE TBD] · Not for publication before this time
+    </div>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="https://walkphase.com">
+                <img src="../walkphase_logo.svg" alt="WalkPhase" class="nav-logo">
+            </a>
+            <span class="nav-label">Press</span>
+        </div>
+    </nav>
+
+    <!-- HERO — story-first -->
+    <header class="hero">
+        <div class="container">
+            <h1>This crossing was fixed in <span class="green">five days.</span></h1>
+            <p class="hero-sub">In April 2026, a pedestrian in Cork measured an unsafe junction with a smartphone. Cork City Council confirmed repairs within five days &mdash; and admitted the signal timing parameters hadn't been revised in 13 years. WalkPhase is how it happened.</p>
+            <div class="hero-meta">
+                <span><strong>Built in Cork, Ireland</strong></span>
+                <span><strong>2 U.S. patents granted</strong></span>
+                <span>Member, <strong>Road to Zero Coalition</strong> (USDOT/NSC)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- THE PROOF -->
+    <section>
+        <div class="container">
+            <span class="section-eyebrow">The Proof</span>
+            <h2>What happened at <span class="green">Killumney Road, Ballincollig.</span></h2>
+
+            <p>On <strong>Friday, 17 April 2026</strong>, a WalkPhase user measured the junction of Killumney Road and Carriganarra Road in Ballincollig, Cork. The platform identified specific safety issues at the crossing and generated a structured safety report. The report was sent to <strong>Cork City Council's Traffic Requests team</strong>.</p>
+
+            <p>Five days later, on <strong>Wednesday, 22 April 2026</strong>, the Council responded.</p>
+
+            <div class="council-quote">
+                <div class="council-quote-eyebrow">Cork City Council — written response · Ref: CSR/2026/08609/RDS</div>
+                <p class="council-quote-text">"I got confirmation that two push buttons were repaired at that junction&hellip; Another visit is planned to confirm crossing distances and associated times <strong>as the parameters for that junction likely haven't been revised since its original installation 13 odd years ago.</strong>"</p>
+                <p class="council-quote-source">— ITS Section, Cork City Council, 22 April 2026</p>
+            </div>
+
+            <p style="font-size: 16px; color: var(--text-white-muted); border-left: 2px solid var(--green-light); padding-left: 16px; margin-top: 24px;">The council's own response acknowledges what WalkPhase was built to expose: signal timing parameters at signalised crossings are routinely set decades ago and rarely revised. The pedestrians who walked the slowest in 2013 are not the same ones using the crossing in 2026.</p>
+
+            <div class="pullquote">
+                <button class="pullquote-copy" onclick="copyQuote(this)">Copy</button>
+                <p class="pullquote-text">"If a crossing isn't safe, you shouldn't have to argue. You should be able to prove it."</p>
+                <p class="pullquote-attr">Emmett Murphy, founder, WalkPhase</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE TENSION -->
+    <section>
+        <div class="container">
+            <span class="section-eyebrow">The Problem</span>
+            <h2>Pedestrian deaths in Ireland rose <span class="green">24% last year.</span></h2>
+
+            <p>2025 was Ireland's worst year for pedestrian deaths in three years. The numbers tell a system-level story.</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">41</div>
+                    <div class="stat-label">Pedestrians killed on Irish roads in 2025</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">+24%</div>
+                    <div class="stat-label">Increase in pedestrian deaths vs. 2024</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">22%</div>
+                    <div class="stat-label">Of all road deaths are pedestrians</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">2nd</div>
+                    <div class="stat-label">Cork ranked 2nd in Ireland for road deaths in 2025 (21 total)</div>
+                </div>
+            </div>
+
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: -8px;">Source: Road Safety Authority, Provisional Review of Fatalities, January–December 2025.</p>
+
+            <p>Ireland's <strong>Government Road Safety Strategy 2021–2030</strong> targets a 50% reduction in road deaths by 2030 and a Vision Zero outcome of zero deaths or serious injuries by 2050. Pedestrian fatalities are moving in the wrong direction.</p>
+
+            <div class="pullquote">
+                <button class="pullquote-copy" onclick="copyQuote(this)">Copy</button>
+                <p class="pullquote-text">"Cities don't ignore data — they ignore complaints. WalkPhase changes a complaint into evidence."</p>
+                <p class="pullquote-attr">Emmett Murphy, founder, WalkPhase</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE MECHANISM -->
+    <section>
+        <div class="container">
+            <span class="section-eyebrow">The Mechanism</span>
+            <h2>A simple walk, turned into <span class="green">structured safety evidence.</span></h2>
+
+            <p>Most pedestrian signals in Ireland — and across the world — are timed on the assumption that pedestrians walk at 1.0 metres per second. Many people don't. Older adults, people with mobility challenges, parents with young children, and many others walk at 0.6 to 0.8 metres per second.</p>
+
+            <p>That means the walk phase at some signalised crossings ends while vulnerable people are still in the road.</p>
+
+            <p>WalkPhase measures this gap. AI analyses the walk and generates a structured safety report ready to send to the relevant council or road authority.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h3>Walk</h3>
+                        <p>Approach a signalised crossing. WalkPhase detects the kerb, the wait, and the crossing.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <h3>Measure</h3>
+                        <p>Real walking speed, wait time, signal phase duration. No roadside hardware. No infrastructure required.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <h3>Report</h3>
+                        <p>AI generates a structured safety report. Send it to the road authority. They have evidence — not a complaint.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pullquote">
+                <button class="pullquote-copy" onclick="copyQuote(this)">Copy</button>
+                <p class="pullquote-text">"This isn't one faulty crossing. It's how crossings are designed. Cork City Council told us the timing at this junction hadn't been revised in 13 years &mdash; and they're not unusual."</p>
+                <p class="pullquote-attr">Emmett Murphy, founder, WalkPhase</p>
+            </div>
+
+            <div class="pullquote">
+                <button class="pullquote-copy" onclick="copyQuote(this)">Copy</button>
+                <p class="pullquote-text">"We use AI to turn a simple walk into structured safety evidence."</p>
+                <p class="pullquote-attr">Emmett Murphy, founder, WalkPhase</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE ACTION -->
+    <section>
+        <div class="container">
+            <span class="section-eyebrow">The Action</span>
+            <h2>No permission required. <span class="green">Anyone can do this.</span></h2>
+
+            <p>WalkPhase doesn't require a city contract, a research permit, or a council approval. Any signalised crossing in Ireland can be measured by anyone with a smartphone.</p>
+
+            <p>Walk. Measure. Report.</p>
+
+            <p>The Killumney Road crossing was measured by one person. Five days later, two push buttons had been repaired.</p>
+        </div>
+    </section>
+
+    <!-- THE IMPACT -->
+    <section>
+        <div class="container">
+            <span class="section-eyebrow">The Impact</span>
+            <h2>If it worked at one crossing, it works <span class="green">at every crossing.</span></h2>
+
+            <p>Ireland is where WalkPhase first proved it works. Every signalised crossing in the country can now be measured the same way — by residents, by advocates, by councils, by anyone willing to walk.</p>
+
+            <p>The longer-term roadmap includes signal-controller integration to <strong>automatically extend green-walk time for verified vulnerable road users</strong> — older adults, people with mobility impairments, and children — at the moment they cross. The platform is being designed to support partnerships with city and county councils across Ireland.</p>
+
+            <div class="pullquote">
+                <button class="pullquote-copy" onclick="copyQuote(this)">Copy</button>
+                <p class="pullquote-text">"Ireland is where WalkPhase first proved this works. If it works at one crossing, it works at every crossing."</p>
+                <p class="pullquote-attr">Emmett Murphy, founder, WalkPhase</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSETS -->
+    <section>
+        <div class="container-wide">
+            <span class="section-eyebrow">Media Assets</span>
+            <h2>Everything you need <span class="green">to file the story.</span></h2>
+
+            <p style="max-width: 760px; margin: 0 auto 32px; text-align: center;">All assets cleared for editorial use. Contact us for additional requests, interviews, or higher-resolution files.</p>
+
+            <div class="assets-grid">
+                <a href="#" class="asset">
+                    <span class="asset-icon">📰</span>
+                    <div class="asset-body">
+                        <h4>Press release (PDF)</h4>
+                        <p>Full embargoed release</p>
+                    </div>
+                </a>
+                <a href="#" class="asset">
+                    <span class="asset-icon">📷</span>
+                    <div class="asset-body">
+                        <h4>Killumney Road photo</h4>
+                        <p>High-resolution, hero shot</p>
+                    </div>
+                </a>
+                <a href="#" class="asset">
+                    <span class="asset-icon">📱</span>
+                    <div class="asset-body">
+                        <h4>App screenshots</h4>
+                        <p>iPhone + Apple Watch</p>
+                    </div>
+                </a>
+                <a href="../demo.mp4" class="asset">
+                    <span class="asset-icon">🎬</span>
+                    <div class="asset-body">
+                        <h4>Demo video</h4>
+                        <p>60s, 1080p</p>
+                    </div>
+                </a>
+                <a href="#" class="asset">
+                    <span class="asset-icon">👤</span>
+                    <div class="asset-body">
+                        <h4>Founder photo &amp; bio</h4>
+                        <p>Emmett Murphy</p>
+                    </div>
+                </a>
+                <a href="#" class="asset">
+                    <span class="asset-icon">📄</span>
+                    <div class="asset-body">
+                        <h4>Cork City Council response</h4>
+                        <p>Verbatim extract</p>
+                    </div>
+                </a>
+                <a href="#" class="asset">
+                    <span class="asset-icon">🎨</span>
+                    <div class="asset-body">
+                        <h4>Logo &amp; brand kit</h4>
+                        <p>SVG, PNG, dark/light</p>
+                    </div>
+                </a>
+                <a href="../story/killumney" class="asset">
+                    <span class="asset-icon">📖</span>
+                    <div class="asset-body">
+                        <h4>Full Killumney story</h4>
+                        <p>Long-form narrative</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+        <div class="container">
+            <span class="section-eyebrow">Contact</span>
+            <h2>Talk to the founder.</h2>
+
+            <p>Emmett Murphy is available for interview by phone, video, or in person — Ireland-based.</p>
+
+            <div class="contact-block">
+                <h3>Press enquiries</h3>
+                <p><strong>Emmett Murphy</strong> · Founder, WalkPhase</p>
+                <p><a href="mailto:emmett@walkphase.com">emmett@walkphase.com</a></p>
+                <p><a href="https://walkphase.com">walkphase.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>WalkPhase &mdash; Pedestrian Signal Timing Intelligence &nbsp;|&nbsp; <a href="https://walkphase.com">walkphase.com</a></p>
+        <p style="margin-top: 8px; font-size: 11px;">Member, Road to Zero Coalition &mdash; a USDOT &amp; National Safety Council initiative.</p>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Quote copied</div>
+
+    <script>
+        function copyQuote(btn) {
+            const quote = btn.parentElement.querySelector('.pullquote-text').textContent;
+            const attr = btn.parentElement.querySelector('.pullquote-attr').textContent;
+            const text = quote + '\n— ' + attr;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            });
+        }
+    </script>
+</body>
+</html>

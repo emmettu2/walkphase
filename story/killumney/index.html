@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+    <title>The Killumney Road Story — WalkPhase</title>
+    <meta name="description" content="A pedestrian crossing in Cork, measured in one walk, fixed in five days. The full story.">
+
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --green-deep: #166534; --green-mid: #15803d; --green-light: #22c55e;
+            --bg-cream: #faf8f3; --bg-paper: #ffffff;
+            --text-primary: #1a1a1a; --text-secondary: #4b5563; --text-muted: #6b7280;
+            --rule: rgba(0,0,0,0.1);
+        }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Nav */
+        .nav { padding: 24px; border-bottom: 1px solid var(--rule); background: var(--bg-paper); }
+        .nav-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { height: 24px; width: auto; }
+        .nav-back { font-size: 13px; color: var(--text-muted); }
+        .nav-back:hover { color: var(--green-deep); }
+
+        /* Article */
+        article { max-width: 720px; margin: 0 auto; padding: 80px 24px 60px; }
+
+        .article-eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--green-deep);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .article-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .article-deck {
+            font-size: 22px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .article-meta {
+            font-size: 13px;
+            color: var(--text-muted);
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 48px;
+            letter-spacing: 0.5px;
+        }
+
+        article p {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-size: 19px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            line-height: 1.65;
+        }
+
+        article p strong { font-weight: 700; }
+        article p em { font-style: italic; }
+
+        article h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Pull quote */
+        .pull {
+            margin: 40px -20px;
+            padding: 32px 24px;
+            background: var(--bg-paper);
+            border-left: 4px solid var(--green-light);
+            border-radius: 0 8px 8px 0;
+        }
+        .pull-text {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .pull-attr {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        /* Council quote — verbatim */
+        .verbatim {
+            margin: 40px 0;
+            padding: 28px;
+            background: var(--bg-paper);
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+        }
+        .verbatim-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: var(--green-deep);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .verbatim-text {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .verbatim-source {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Image placeholder */
+        .figure {
+            margin: 48px -40px;
+            text-align: center;
+        }
+        .figure-img {
+            background: var(--bg-paper);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+        }
+        .figure-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Stats inline */
+        .stats-inline {
+            margin: 32px 0;
+            padding: 24px;
+            background: var(--bg-paper);
+            border-radius: 12px;
+            border: 1px solid var(--rule);
+            font-family: 'Inter', sans-serif;
+        }
+        .stats-inline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .stats-inline-item .num { font-size: 28px; font-weight: 700; color: var(--green-deep); line-height: 1; margin-bottom: 6px; }
+        .stats-inline-item .lbl { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
+        /* Footer */
+        .article-footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rule);
+            font-family: 'Inter', sans-serif;
+        }
+        .article-footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .article-footer a { color: var(--green-deep); text-decoration: underline; text-decoration-color: rgba(22,101,52,0.3); }
+
+        /* Site footer */
+        .site-footer {
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--rule);
+            background: var(--bg-paper);
+        }
+        .site-footer a { color: var(--green-deep); }
+
+        @media (max-width: 600px) {
+            article { padding: 48px 20px; }
+            .article-title { font-size: 2rem; }
+            .article-deck { font-size: 18px; }
+            article p { font-size: 17px; }
+            .pull { margin: 32px 0; }
+            .figure { margin: 32px 0; }
+            .stats-inline-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="https://walkphase.com">
+                <img src="../../walkphase_logo.svg" alt="WalkPhase" class="nav-logo">
+            </a>
+            <a href="../../press" class="nav-back">&larr; Press resources</a>
+        </div>
+    </nav>
+
+    <article>
+        <span class="article-eyebrow">Story · Cork, Ireland</span>
+        <h1 class="article-title">The crossing that was fixed in five days.</h1>
+        <p class="article-deck">A junction in Ballincollig was measured by one person with a smartphone. Five days later, Cork City Council confirmed two pedestrian push buttons had been repaired &mdash; and admitted the signal timing hadn't been revised in 13 years. This is what changed.</p>
+        <p class="article-meta">22 April 2026 · By Emmett Murphy · 6 min read</p>
+
+        <p>The junction of Killumney Road and Carriganarra Road in Ballincollig is unremarkable. It sits in a quiet part of west Cork county, surrounded by housing and a school. Most people who cross it have done so thousands of times, without thinking about it.</p>
+
+        <p>That's part of the problem.</p>
+
+        <p>Pedestrian crossings are designed on the assumption that everyone walks at <strong>1.0 metres per second</strong>. It's an engineering convention drawn from research that's now decades old. It applies to junctions across Ireland, the UK, Europe, and most of the developed world. It assumes a fit adult, walking briskly, on a clear day.</p>
+
+        <p>Most people don't walk that fast. Older adults walk slower. People with mobility impairments walk slower. Parents pushing prams walk slower. People carrying shopping walk slower. Children walk slower. The number isn't fringe — research from agencies including the U.S. Federal Highway Administration consistently puts the real walking speed of vulnerable pedestrians somewhere between <strong>0.6 and 0.8 metres per second</strong>.</p>
+
+        <p>That gap matters. At a typical urban crossing, a fit adult walking at 1.0 m/s might cross 12 metres of road in 12 seconds. Someone walking at 0.7 m/s needs <strong>17 seconds</strong>. If the green walk phase was set with the first number in mind, the second person is still in the road when the signal changes.</p>
+
+        <h2>The walk</h2>
+
+        <p>On <strong>Friday, 17 April 2026</strong>, a WalkPhase user crossed the Killumney Road junction. The smartphone in their pocket recorded what happened: when they arrived at the kerb, when they began crossing, how fast they walked, and how long the signal gave them.</p>
+
+        <p>Within seconds of arriving at the other side, the app had a structured safety report ready. Walking speed. Wait time. Signal phase duration. Comparison to the engineering assumption. A clear summary of what was wrong.</p>
+
+        <p>The user sent the report to Cork City Council's Traffic Requests team that evening.</p>
+
+        <p>Five days later, on <strong>Wednesday, 22 April 2026</strong>, the ITS Section of Cork City Council responded.</p>
+
+        <div class="verbatim">
+            <p class="verbatim-eyebrow">Cork City Council — written response · Ref: CSR/2026/08609/RDS</p>
+            <p class="verbatim-text">"Hi Emmett, I got confirmation that two push buttons were repaired at that junction&hellip; Another visit is planned to confirm crossing distances and associated times <strong>as the parameters for that junction likely haven't been revised since its original installation 13 odd years ago</strong>."</p>
+            <p class="verbatim-source">— ITS Section, Cork City Council, 22 April 2026</p>
+        </div>
+
+        <p>Two specific issues had been identified, escalated, and fixed in less time than it takes most people to receive a reply from a council planning office. But the more striking part of the response was the second sentence.</p>
+
+        <p>The signal timing parameters at this junction hadn't been revised in <strong>13 years</strong>. The pedestrians who walked the slowest in 2013 are not the pedestrians using the crossing in 2026. The crossing wasn't unsafe because anyone made a mistake. It was unsafe because the assumptions baked into it had been left to age, while the people relying on them changed.</p>
+
+        <p>The Council did not act on a complaint. They acted on evidence. There was no debate about whether the crossing was safe. The data made the answer self-evident.</p>
+
+        <div class="pull">
+            <p class="pull-text">"If a crossing isn't safe, you shouldn't have to argue. You should be able to prove it."</p>
+            <p class="pull-attr">Emmett Murphy, founder, WalkPhase</p>
+        </div>
+
+        <h2>The wider problem</h2>
+
+        <p>2025 was Ireland's worst year for pedestrian deaths in three years.</p>
+
+        <div class="stats-inline">
+            <div class="stats-inline-grid">
+                <div class="stats-inline-item">
+                    <div class="num">41</div>
+                    <div class="lbl">Pedestrians killed on Irish roads in 2025</div>
+                </div>
+                <div class="stats-inline-item">
+                    <div class="num">+24%</div>
+                    <div class="lbl">Increase vs. 2024</div>
+                </div>
+                <div class="stats-inline-item">
+                    <div class="num">22%</div>
+                    <div class="lbl">Of all road deaths were pedestrians</div>
+                </div>
+                <div class="stats-inline-item">
+                    <div class="num">2nd</div>
+                    <div class="lbl">Cork ranked 2nd in Ireland for road deaths in 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <p>Ireland's <strong>Government Road Safety Strategy 2021–2030</strong> commits to halving road deaths and serious injuries by 2030, and to a Vision Zero outcome of zero deaths or serious injuries on Irish roads by 2050. Pedestrian fatalities are moving in the wrong direction.</p>
+
+        <p>It's not because nobody is doing anything. The Road Safety Authority publishes detailed quarterly reports. Local councils run safety campaigns. National media run stories every year. Advocates write letters. People file complaints.</p>
+
+        <p>But councils don't fix crossings because someone wrote a letter. They fix them because someone produced evidence — and the evidence makes the answer obvious.</p>
+
+        <div class="pull">
+            <p class="pull-text">"Cities don't ignore data. They ignore complaints."</p>
+            <p class="pull-attr">Emmett Murphy, founder, WalkPhase</p>
+        </div>
+
+        <h2>What WalkPhase does</h2>
+
+        <p>WalkPhase is a smartphone-based platform that measures real walking speeds, wait times, and signal timing at signalised crossings. It uses AI to turn that data into a structured safety report — the kind of evidence councils need but rarely receive.</p>
+
+        <p>The crucial design choice: <strong>no roadside hardware</strong>. No sensors on poles. No installation. No infrastructure required. Any signalised crossing in Ireland can be measured by anyone with a phone.</p>
+
+        <p>That choice matters. Traditional pedestrian safety studies require a council, a budget, a procurement process, a contractor, and weeks or months of fieldwork — for a single junction. WalkPhase reduces that to a single walk by a single person, anywhere in the country.</p>
+
+        <p>The phone goes in the pedestrian's pocket. Sensors are passive. The user doesn't need to look at a screen while crossing. WalkPhase isn't a tool people use <em>during</em> a crossing — it's a measurement system that observes what's already happening.</p>
+
+        <h2>What happens next</h2>
+
+        <p>The Killumney Road junction is the first publicly verifiable example of a WalkPhase-driven outcome. It will not be the last.</p>
+
+        <p>The platform is being designed to support partnerships with city and county councils across Ireland — providing a continuous stream of real-world pedestrian safety evidence drawn from the people who use their crossings, not occasional consultancy studies.</p>
+
+        <p>Future development includes signal-controller integration to <strong>automatically extend green-walk time for verified vulnerable road users</strong> at the moment they cross — older adults, people with mobility impairments, children. The signals respond to the people, not to a thirty-year-old engineering assumption.</p>
+
+        <p>Ireland is where this was first proved to work. If it works at one crossing, it works at every crossing. And if it works in Ireland, it works anywhere.</p>
+
+        <div class="pull">
+            <p class="pull-text">"This isn't one faulty crossing. It's how crossings are designed."</p>
+            <p class="pull-attr">Emmett Murphy, founder, WalkPhase</p>
+        </div>
+
+        <div class="article-footer">
+            <p><strong>About WalkPhase.</strong> WalkPhase is an Irish-built pedestrian signal timing platform protected by two granted U.S. patents. It is a member of the Road to Zero Coalition, a U.S. Department of Transportation and National Safety Council initiative to eliminate roadway fatalities.</p>
+            <p>For media enquiries, interviews, or additional resources, contact <a href="mailto:emmett@walkphase.com">emmett@walkphase.com</a> or visit the <a href="../../press">press page</a>.</p>
+            <p>Sources: Road Safety Authority Provisional Review of Fatalities, January–December 2025. Cork City Council written correspondence (extract). Federal Highway Administration research on pedestrian walking speeds.</p>
+        </div>
+    </article>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <p>WalkPhase &mdash; Pedestrian Signal Timing Intelligence &nbsp;|&nbsp; <a href="https://walkphase.com">walkphase.com</a></p>
+        <p style="margin-top: 8px; font-size: 11px;">Member, Road to Zero Coalition &mdash; a USDOT &amp; National Safety Council initiative.</p>
+    </footer>
+
+</body>
+</html>
