@@ -131,7 +131,7 @@
         <a href="/" class="back">&larr; walkphase.com</a>
 
         <h1>Privacy Policy</h1>
-        <p class="effective">Effective date: 16 April 2026</p>
+        <p class="effective">Effective date: 25 April 2026</p>
 
         <p>WalkPhase is a pedestrian crossing safety app for iPhone and Apple Watch. We built it to help you cross the road safely — not to collect your data. This policy explains exactly what happens with your information when you use the app.</p>
 
@@ -172,9 +172,9 @@
             <li>We use <strong>Sign in with Apple</strong> exclusively — no passwords are stored.</li>
             <li>Apple provides us with a <strong>stable user identifier</strong> and optionally your <strong>email address</strong> (which may be an Apple relay address).</li>
             <li>If you provide your name, it is stored locally on your device and optionally included in safety reports you send.</li>
-            <li>Your optional profile (walking speed, accessibility needs, employer) is stored <strong>on your device only</strong>.</li>
+            <li>Your profile (display name, email, walking speed, accessibility needs, organisation, home city/country) is stored <strong>on your device</strong> and is also <strong>backed up to your private iCloud account via CloudKit Private Database</strong>. This backup is per-Apple-ID and is only accessible to you, on your own iCloud-signed-in devices. We do not have access to it. Its purpose is to recover your profile if you reinstall the app or set up a new device.</li>
         </ul>
-        <p>Signing in enables data backup via CloudKit and lets you receive credit when your crossing data contributes to a safety improvement.</p>
+        <p>Signing in enables data backup via CloudKit and lets you receive credit when your crossing data contributes to a safety improvement. After your name has been recorded (whether shared by Apple at first sign-in or entered manually once), it becomes read-only — you cannot subsequently change it from inside the app, to prevent identity changes that would let one contributor masquerade as another.</p>
 
         <h2>4. Anonymous analytics</h2>
         <p>We use <a href="https://telemetrydeck.com" target="_blank">TelemetryDeck</a>, an EU-based, privacy-first analytics service, to understand how WalkPhase is used in aggregate. TelemetryDeck processes data in <strong>Germany</strong> and is fully GDPR-compliant.</p>
@@ -210,7 +210,13 @@
         <p>You can deny or revoke any permission at any time. WalkPhase will still function with reduced capability.</p>
 
         <h2>7. iCloud & data backup</h2>
-        <p>Intersection data and crossing summaries are backed up to Apple CloudKit (public database for community sharing, and iCloud Key-Value Store for personal backup). Raw accelerometer data is <strong>not</strong> backed up (it exceeds size limits). If you sign in, your data can be restored on a new device.</p>
+        <p>Three Apple-provided backup channels are used by WalkPhase, all confined to your own Apple ID and your own iCloud account:</p>
+        <ul>
+            <li><strong>iCloud Key-Value Store</strong> — your saved intersections and crossing summaries. Restored automatically on a new device or reinstall.</li>
+            <li><strong>CloudKit Private Database</strong> — your user profile (name, email, walking speed, accessibility needs, organisation, home area). Per-Apple-ID, only you can read it. We added this to make profile recovery on reinstall reliable.</li>
+            <li><strong>CloudKit Public Database (anonymous)</strong> — community signal-timing plans and anonymised crossing path segments. Not linked to your name.</li>
+        </ul>
+        <p>Raw accelerometer data is <strong>not</strong> backed up to any iCloud channel (it exceeds size limits and we treat it as ephemeral debug data).</p>
 
         <h2>8. What we do NOT do</h2>
         <ul class="not-list">
@@ -244,7 +250,7 @@
             <p style="margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.3);">WalkPhase is developed by Emmett Murphy, Cork, Ireland.</p>
         </div>
 
-        <p class="footer-note">This policy was last updated on 16 April 2026.</p>
+        <p class="footer-note">This policy was last updated on 25 April 2026.</p>
     </div>
 </body>
 </html>
